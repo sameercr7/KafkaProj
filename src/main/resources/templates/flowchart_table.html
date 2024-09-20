@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}"></head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+
+    <div class="col-12 mt-2">
+
+        <div id="flowChartContainer" class="text-center">
+            <a href="#">
+                <button id="flowChartButton" class="btn btn-light">
+            <span>
+                <img class="img card-logo" src="/img/flowchart.png" alt="Flowchart">
+            </span>
+                </button>
+            </a>
+        </div>
+
+        <div class="card-header row w-100 m-0">
+            <div class="container-fluid mt-2 p-2">
+                <div class="container-fluid card-border">
+                    <div id="dataTableContainer" class="mt-2 mb-2">
+                        <table id="example" class="w-100 table-responsive">
+                            <thead>
+                            <tr>
+                                <th>क्रम संख्या</th>
+                                <th>दिनांक</th>
+                                <th>प्रेषक स्तर</th>
+                                <th>प्राप्तकर्ता स्तर</th>
+<!--                                <th>आवेदन की स्थिति</th>-->
+<!--                                <th>टिप्पणी</th>-->
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>CE 1</td>
+                                <td>अनुमत</td>
+                                <td>05/08/2024</td>
+                                <td>05/08/2024</td>
+<!--                                <td>05/08/2024</td>-->
+<!--                                <td>05/08/2024</td>-->
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<div th:replace="~{fragment/header.html :: js}"></div>
+<script th:src="@{/js/flowChartTable.js}"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head th:insert="~{fragment/header.html :: head}">
+  <title>Dashboard</title>
+</head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+  <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+  <div class="container-fluid m-0 p-0 d-flex">
+
+    <div th:insert="~{fragment/header.html :: sidebar_agency}"></div>
+
+    <main id="main-content">
+      <div class="container-fluid m-0 p-0 row">
+        <div class="col-12 mt-2">
+          <div class="card-header row w-100 m-0">
+
+            <div class="row align-items-center">
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <h1 class="text-center text-md-center mt-3 fw-bolder">एजेंसी द्वारा किये गए आवेदन</h1>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-12 d-flex align-items-center justify-content-end">
+                <select id="financial-year-select" class="form-select w-50 card-border text-center"
+                        aria-label="Default select example">
+                  <!-- Options will be populated by JavaScript -->
+                </select>
+              </div>
+            </div>
+
+            <div class="container-fluid mt-2 p-2">
+              <div class="container-fluid p-0 border border-2 shadow card">
+                <div id="dataTableContainer" class="mt-2 mb-2">
+                  <table id="example" class="w-100 table-responsive">
+                    <thead>
+                    <tr>
+                      <th>क्रम संख्या</th>
+                      <th>एजेंसी का नाम</th>
+                      <th>अनापत्ति प्रकार</th>
+                      <th>स्थिति</th>
+                      <th>तारीख</th>
+                      <th>आवेदन देखें</th>
+                      <th>फ्लोचार्ट</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    <!-- Table rows will be inserted here dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div th:replace="~{fragment/header.html :: js}"></div>
+<script th:src="@{/js/agencyReview.js}"></script>
+<script th:src="@{/js/dashboard.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,975 @@
+/* Header */
+@font-face {
+    font-family: 'Mukta';
+    font-style: normal;
+    font-weight: 200 800; /* Supports all weights between 200 and 800 */
+    src: local('Mukta'), url('/fonts/Mukta/Mukta-Bold.ttf') format('truetype');
+}
+
+/* Font weights */
+.mukta-extralight {
+    font-family: "Mukta", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.mukta-light {
+    font-family: "Mukta", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.mukta-regular {
+    font-family: "Mukta", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.mukta-medium {
+    font-family: "Mukta", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.mukta-semibold {
+    font-family: "Mukta", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.mukta-bold {
+    font-family: "Mukta", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.mukta-extrabold {
+    font-family: "Mukta", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Mukta', sans-serif;
+}
+
+
+.header {
+    background: linear-gradient(90deg, rgb(244 198 25) 0%, rgb(243 107 52) 31%, rgb(237 19 124) 64%, rgb(40 143 209) 100%);
+    color: white;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.tagline {
+    font-size: 4em;
+}
+
+.nav-item {
+    background: #ff0000;
+    color: white;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+.navbar {
+    overflow: hidden;
+    /*background-color: #333;*/
+}
+
+/*.navbar a {*/
+/*    float: left;*/
+/*    font-size: 18px;*/
+/*    color: white;*/
+/*    text-align: center;*/
+/*    padding: 0px 10px;*/
+/*    text-decoration: none;*/
+/*    font-weight: 500;*/
+/*    border-right: 1px solid white;*/
+/*}*/
+
+.navbar a {
+    display: inline-block; /* Ensures the links are treated as block elements */
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    padding: 10px 20px; /* Adjust the padding as needed */
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    background-color: transparent;
+    border-right: 2px solid white; /* Adjust border as needed */
+    /*border-left: 1px solid white; !* For a consistent look on both sides *!*/
+    transform: skew(-45deg); /* Skew the element to create the parallelogram effect */
+}
+
+.navbar a span {
+    display: block;
+    transform: skew(45deg); /* Counteract the skew effect on the text */
+}
+
+/*.navbar a:first-child {*/
+/*    border-left: 2px solid white;*/
+/*}*/
+
+.navbar a:nth-child(2) {
+    border-left: 2px solid white;
+}
+
+
+.navbar a:hover {
+    background-color: #ffffff;
+    color: black;
+}
+
+.navbar .dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.navbar .dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar .dropdown:hover .dropbtn {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.navbar .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.navbar .dropdown-content a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/*  dashboard cards   */
+
+.card-border {
+    border: 1px solid black
+}
+
+.card-logo {
+    height: 50px
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    /*margin-bottom: 30px;*/
+    margin: 20px;
+    box-shadow: 0 0.46875rem 2.1875rem rgba(90, 97, 105, 0.1), 0 0.9375rem 1.40625rem rgba(90, 97, 105, 0.1), 0 0.25rem 0.53125rem rgba(90, 97, 105, 0.12), 0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
+}
+
+.card_info_graphics {
+    background-color: #fff;
+    border-radius: 15px;
+    border: none;
+    position: relative;
+    /*min-height: 24em;*/
+}
+
+.card_inset_shadow {
+    box-shadow: inset 0 0 1rem rgb(0 0 0 / 82%) !important;
+}
+
+.l-bg-cherry {
+    /*background: linear-gradient(to right, #493240, #f09) !important;*/
+    color: rgba(10, 10, 10, 0.85);
+}
+
+.l-bg-blue-dark {
+    /*background: linear-gradient(to right, #373b44, #4286f4) !important;*/
+    color: rgba(10, 10, 10, 0.85);
+}
+
+.l-bg-green-dark {
+    /*background: linear-gradient(to right, #0a504a, #38ef7d) !important;*/
+    color: rgba(10, 10, 10, 0.85);
+}
+
+.l-bg-orange-dark {
+    /*background: linear-gradient(to right, #a86008, #ffba56) !important;*/
+    color: rgba(10, 10, 10, 0.85);
+}
+
+.card .card-statistic-3 .card-icon-large .fas, .card .card-statistic-3 .card-icon-large .far, .card .card-statistic-3 .card-icon-large .fab, .card .card-statistic-3 .card-icon-large .fal {
+    font-size: 110px;
+}
+
+.card .card-statistic-3 .card-icon {
+    text-align: center;
+    line-height: 50px;
+    margin-left: 15px;
+    color: #000;
+    position: absolute;
+    right: -5px;
+    top: 20px;
+    opacity: 0.1;
+}
+
+.l-bg-cyan {
+    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+    color: #fff;
+}
+
+.l-bg-green {
+    background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%) !important;
+    color: #fff;
+}
+
+.l-bg-orange {
+    background: linear-gradient(to right, #f9900e, #ffba56) !important;
+    color: #fff;
+}
+
+.l-bg-cyan {
+    background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+    color: #fff;
+}
+
+/* dashboard datable */
+.display {
+    display: none;
+}
+
+#example {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#example th, #example td {
+    border: 1px solid black; /* Add border to table cells */
+    padding: 8px;
+    text-align: center;
+}
+
+#example th {
+    background-color: #f2f2f2;
+}
+
+#example1 {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#example1 th, #example1 td {
+    border: 1px solid black; /* Add border to table cells */
+    padding: 8px;
+    text-align: center;
+}
+
+#example1 th {
+    background-color: #f2f2f2;
+}
+
+#example2 {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#example2 th, #example2 td {
+    border: 1px solid black; /* Add border to table cells */
+    padding: 8px;
+    text-align: center;
+}
+
+#example2 th {
+    background-color: #f2f2f2;
+}
+
+/* flowchart */
+
+.flowchart .box {
+    background: white;
+    color: black;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    text-align: left;
+    font-size: 1.1em;
+    position: relative;
+    height: 100%;
+}
+
+.flowchart .box-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.flowchart .box-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.flowchart .label {
+    font-weight: normal;
+}
+
+.flowchart .value {
+    text-align: right;
+}
+
+/* Connector lines */
+
+.connector-horizontal {
+    position: absolute;
+    height: 2px;
+    background-color: black;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    width: 30px;
+}
+
+.connector-horizontal.connector-left {
+    left: auto;
+    right: 100%;
+    transform: translateY(-50%);
+}
+
+.connector-vertical {
+    position: absolute;
+    width: 2px;
+    background-color: black;
+    height: 30px;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Adjustments for flowchart layout */
+.flowchart .col-3 {
+    position: relative;
+}
+
+.flowchart .col-3 .box {
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    .flowchart .connector-horizontal {
+        display: none;
+    }
+}
+
+
+/* login page */
+
+.buttonlogin {
+    display: inline-block;
+    background: #4285f4;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 20px 30px;
+    border-radius: 5px;
+    box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    -webkit-transition: all ease-in-out 300ms;
+    transition: all ease-in-out 300ms;
+}
+
+.buttonlogin:hover {
+    box-shadow: 0px 37px 20px -20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: translate(0px, -10px) scale(1.2);
+    transform: translate(0px, -10px) scale(1.2);
+}
+
+.margin {
+    margin-top: 10%
+}
+
+
+/* footer */
+
+
+.logo-footer {
+    margin-bottom: 30px;
+}
+
+footer {
+    background-image: url("/img/footer_bg.png");
+}
+
+.btn-footer {
+    color: grey;
+
+    text-decoration: none;
+    border: 1px solid;
+    border-radius: 43px;
+    font-size: 13px;
+    padding: 7px 30px;
+    line-height: 47px;
+}
+
+.btn-footer:hover {
+
+    text-decoration: none;
+
+}
+
+.form-footer input[type="text"] {
+    border: none;
+    border-radius: 16px 0 0 16px;
+    outline: none;
+    padding-left: 10px;
+
+}
+
+::placeholder {
+    font-size: 10px;
+    padding-left: 10px;
+    font-style: italic;
+}
+
+.form-footer input[type="button"] {
+    border: none;
+    background: #232323;
+    margin-left: -5px;
+    color: #fff;
+    outline: none;
+    border-radius: 0 16px 16px 0;
+    padding: 2px 12px;
+}
+
+.social .fa {
+    color: grey;
+    font-size: 22px;
+    padding: 10px 15px;
+    background: #3c3c3c;
+}
+
+footer ul li {
+    list-style: none;
+    display: block;
+}
+
+footer ul {
+    padding-left: 0;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: grey;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #000000 !important;
+    background: white;
+}
+
+.vertical-divider {
+    border-right: 2px solid white; /* Set the color and style of the vertical line */
+    height: 100%; /* Make sure the border spans the full height of the column */
+    /*margin-right: 15px; !* Optional: Adds spacing between the line and the content *!*/
+}
+
+/* Landing Page */
+
+.bannerheight {
+
+    height: 500px;
+}
+
+/* Department Login */
+
+
+.custom-shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.glossy-background {
+    background: rgba(0, 0, 0, 0.6); /* Dark background with transparency */
+    backdrop-filter: blur(10px); /* Adds the frosted glass effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adds a subtle shadow for depth */
+    padding: 15px; /* Adds padding inside the container */
+}
+
+/* Landing Page */
+
+.card2 {
+    /*max-width: 160px;*/
+    border-radius: 10px;
+    /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+    transition: transform 0.2s;
+
+}
+
+.card2:hover {
+    transform: scale(1.05);
+}
+
+.card2 img {
+    border-radius: 10px 10px 0 0;
+    max-height: 120px;
+    object-fit: cover;
+}
+
+.card2-body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card2-title {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    text-wrap: nowrap;
+}
+
+.card2-text {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.rating2-stars {
+    color: #28a745;
+    font-size: 0.8rem;
+}
+
+.user-content p {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.testimonial-slider {
+    overflow: hidden;
+    width: 100%;
+    /*max-width: 1200px;*/
+    margin: auto;
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.testimonial-card {
+    min-width: 25%; /* Shows 4 cards at a time */
+    padding: 10px;
+}
+
+.card5 {
+    height: 100%;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.63); /* Light transparent white */
+    border-radius: 15px;
+    backdrop-filter: blur(5px); /* Blur effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Slight shadow for depth */
+    color: #000000;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Light border for added effect */
+}
+
+.pointsheight {
+
+    height: 20px;
+}
+
+hr.dotted {
+    border-top: 1px dotted #dc3545;
+}
+
+hr.dashed {
+    border-top: 2px dashed #0d6efd;
+}
+
+aside {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    transition: width 0.3s ease;
+    position: relative;
+}
+
+aside ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+aside ul li {
+    padding: 15px;
+    text-align: center;
+}
+
+aside ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    min-height: 30px;
+}
+
+aside ul li a:hover {
+    background-color: #575757;
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    background-color: #333;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    border: 2px solid white;
+}
+
+main {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: #f4f4f4;
+}
+
+.closed {
+    width: 50px;
+}
+
+.closed ul {
+    display: none;
+}
+
+.closed span{
+    display: none;
+}
+
+a {
+    color: rgb(0 0 0);
+    text-decoration: none;
+}
+
+/* Loader styles */
+/* Center the loader */
+#loader_turn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+.loader_contain{
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(10px);
+    background: #80808087;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+    to {
+        bottom: 0px;
+        opacity: 1
+    }
+}
+
+@keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+    to {
+        bottom: 0;
+        opacity: 1
+    }
+}
+
+#myDiv {
+    display: none;
+    text-align: center;
+}
+
+html::-webkit-scrollbar {
+    width: 10px; /* Width of the vertical scrollbar */
+    height: 10px; /* Height of the horizontal scrollbar */
+}
+
+html::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Color of the scrollbar track */
+    border-radius: 5px; /* Rounded corners */
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color of the scrollbar thumb */
+    border-radius: 5px; /* Rounded corners for thumb */
+    border: 2px solid #f0f0f0; /* Space around the thumb */
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Color of the scrollbar thumb on hover */
+}
+
+/* Styling for Firefox */
+html {
+    scrollbar-width: thin; /* Options: auto, thin, none */
+    scrollbar-color: #888 #f0f0f0; /* thumb color and track color */
+}
+
+.side_cut {
+    position: absolute;
+    width: 350px;
+    height: 500px;
+    z-index: 50;
+    left: -100px;
+    background: linear-gradient(136deg, rgba(194, 54, 101, 1) 0%, rgba(27, 30, 111, 1) 88%);
+    transform: skewX(18deg);
+}
+.radial_dot_bg{
+    background-image: radial-gradient(#00000054 1px, transparent 0);
+    background-size: 16px 16px;
+}
+.feedback_bg{
+    background-image: url(/img/feedback_bg_2.png);
+    background-size: cover;
+    background-position: center;
+}
+.menu_bg{
+    background-image: url(/img/menu_bg_2.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Glassy look for cards */
+.glass-card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hover effect for cards */
+.glass-card:hover {
+    transform: scale(1.05); /* Slightly enlarges the card on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+/* Icon styling */
+.glass-card i {
+    margin-bottom: 10px; /* Adds spacing below the icon */
+    color: white; /* Icon color */
+}
+
+.logo-container {
+    width: 150px;
+    height: 150px;
+    position: relative; /* Needed for absolute positioning of front and back */
+    perspective: 1000px; /* Creates a 3D space for the flip effect */
+    transform-style: preserve-3d; /* Ensures that child elements are properly rendered in 3D */
+    animation: spin_logo 6s infinite linear; /* Spinning animation */
+}
+
+.logo-front, .logo-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    backface-visibility: hidden; /* Hides the back side */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensures that the logo stays within bounds */
+}
+
+.logo-front {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    transform: rotateY(0deg); /* Front side */
+}
+
+.logo-back {
+    background-color: white;
+    transform: rotateY(180deg); /* Initially rotate the back side */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Same shadow for consistency */
+}
+
+.logo_login {
+    width: 80%; /* Adjust logo size within the container */
+    height: auto;
+}
+
+@keyframes spin_logo {
+    0% {
+        transform: rotateY(0deg) ;
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Adding a thicker appearance */
+.logo-container::before {
+    content: '';
+    position: absolute;
+    top: -10px; /* Adjust for desired thickness */
+    left: -10px; /* Adjust for desired thickness */
+    width: calc(100% + 20px); /* Adjust based on thickness */
+    height: calc(100% + 20px); /* Adjust based on thickness */
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent to simulate edge thickness */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    z-index: -1; /* Places it behind the actual logos */
+}
+
+.carousel-item-next, .carousel-item-prev, .carousel-item.active {
+    display: flex;
+}
+
+
+
+.image-frame {
+    position: absolute;
+    width: 328px;
+    overflow: hidden;
+    height: 500px;
+    z-index: 60;
+}
+
+.img-container{
+    position: absolute;
+    width: 420px;
+    overflow: hidden;
+    height: 500px;
+    z-index: 70;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.framed-image {
+    object-fit: cover;
+    background: white;
+    border-radius: 50%;
+    width: 40%;
+}
+
+.top-left-curve, .bottom-left-curve, .middle-right-curve {
+    position: absolute;
+    width: 205px;
+    aspect-ratio: 1; /* Keeps the shape circular */
+    background: linear-gradient(to bottom right, #ef2e69, #f3a926);
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 0.8; /* Adjust opacity for blending */
+    filter: blur(5px); /* Apply a blur effect */
+}
+
+.top-left-curve {
+    top: -90px; /* Adjust position */
+    left: -62px; /* Adjust position */
+}
+
+.bottom-left-curve {
+    bottom: -90px; /* Adjust position */
+    left: -90px; /* Adjust position */
+}
+
+.middle-right-curve {
+    bottom: 135px;
+    right: 80px;
+}
+
+.card__image {
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    border: 5px solid #272133;
+    margin-top: 20px;
+    box-shadow: 0 10px 50px rgba(235, 25, 110, 1);
+}

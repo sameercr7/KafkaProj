@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}"></head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+  <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+  <div class="container-fluid m-0 p-0 d-flex">
+
+      <div th:insert="~{fragment/header.html :: sidebar_dep}"></div>
+
+    <main id="main-content">
+      <div class="container-fluid m-0 p-0 row">
+          <div class="col-12 mt-2">
+
+              <h2 class="text-center fw-bolder">प्रश्न और शिकायतें</h2>
+          </div>
+            <div class="col-12 mt-4" >
+                <h4 class="text-center fw-bolder">Feedback LIST</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="orderTable">
+                        <thead>
+                        <tr>
+                            <th>AGENCY NAME</th>
+                            <th>FEEDBACK</th>
+                            <th>IMAGE</th>
+                            <th>DELETE</th>
+                            <th>Show</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Orders will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+      </div>
+    </main>
+  </div>
+</div>
+<div th:replace="~{fragment/header.html :: js}"></div>
+<script th:src="@{/js/reviewFeedback.js}"></script>
+</body>
+</html>

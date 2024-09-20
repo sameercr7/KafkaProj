@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}"></head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+    <div class="container-fluid m-0 p-0 d-flex">
+
+        <div th:insert="~{fragment/header.html :: sidebar_dep}"></div>
+
+        <main id="main-content">
+            <div class="container-fluid m-0 p-0 row">
+    <div class="col-12 mt-2">
+
+        <h2 class="text-center fw-bolder">सरकारी आदेश एवं परिपत्र</h2>
+        <div class="container-fluid p-0 border border-2 shadow card">
+            <div class="card-body">
+                <form action="/data/savingorder" method="POST" id="orderForm" enctype="multipart/form-data">
+                    <div class="mb-3 row">
+                        <label for="orderNo" class="col-sm-2 col-form-label fw-bold">आदेश संख्या</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control w-50" id="orderNo" name="orderNo" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="date" class="col-sm-2 col-form-label fw-bold">तारीख</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control w-50" id="date" name="date" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="description" class="col-sm-2 col-form-label fw-bold ">विवरण</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control w-50 d-flex justify-content-center" id="description" rows="3" name="description" required></textarea>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="uploadDoc" class="col-sm-2 col-form-label fw-bold ">दस्तावेज़ अपलोड करें</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control w-50 " id="uploadDoc" name="uploadDoc">
+                        </div>
+                    </div>
+                    <div class="mb-3 row d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary w-25">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-12 mt-4">
+        <h4 class="text-center fw-bolder">ORDER LIST</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="orderTable">
+                <thead>
+                <tr>
+                    <th>आदेश संख्या</th>
+                    <th>तारीख</th>
+                    <th>विवरण</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Orders will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{fragment/header.html :: js}"></div>
+
+<script th:src="@{/js/postOrder.js}"></script>
+</body>
+</html>

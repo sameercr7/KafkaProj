@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}">
+    <title>Dashboard</title>
+</head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+    <div class="container-fluid m-0 p-0 d-flex">
+        <div th:insert="~{fragment/header.html :: sidebar_agency}"></div>
+        <main id="main-content">
+            <div class="container-fluid m-0 p-0 row">
+                <div class="col-12 mt-2">
+                    <h1 class="text-center mb-2 fw-bolder">Dashboard</h1>
+                    <div class="card-header row w-100 m-0">
+                        <div class="container row mt-2">
+                            <div class="col-lg-6 col-md-12 col-sm-12 d-flex align-items-center">
+                                <h1 class="card-title text-dark"><strong>आवदेनों की अत्यधन स्थिति</strong><span class="current-date-time" ></span></h1>
+
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 d-flex align-items-center justify-content-end">
+                                <select id="financial-year-select" class="form-select w-50 card-border text-center" aria-label="Default select example">
+                                    <!-- Options will be populated by JavaScript -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="container mt-2">
+                            <div class="container-fluid d-flex justify-content-center align-items-center card_inset_shadow header rounded-4">
+                                <div class="row m-0 p-0 w-100">
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                                        <a id="agency-application-link" href="/noc/agency_application">
+                                            <div class="card l-bg-cherry">
+                                                <div class="card-statistic-3 p-4 row">
+                                                    <div class="col-4">
+                                                        <img class="img img-fluid" th:src="@{/img/total.png}" alt="total">
+                                                    </div>
+                                                    <div class="col-8 row">
+                                                        <div class="col-12">
+                                                            <div class="fs-3 fw-bold text-center w-100">कुल आवेदन</div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="fs-1 fw-bold text-center w-100 counter" data-target="5000" id="totalApplicationsAgency">100</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+<!--                                                <div class="card-statistic-3 p-4 row">-->
+<!--                                                    <div class="col-4">-->
+<!--                                                        <img class="img card-logo" th:src="@{/img/total.png}" alt="total">-->
+<!--                                                    </div>-->
+<!--                                                    <div class="mb-4 col-8 d-flex justify-content-end">-->
+<!--                                                        &lt;!&ndash;                                            <h4 class="card-title mb-0">TOTAL APPLICATION</h4>&ndash;&gt;-->
+<!--                                                        <h4 class="card-title mb-0">कुल आवेदन</h4>-->
+<!--                                                    </div>-->
+<!--                                                    <div class="row align-items-center mb-2 d-flex">-->
+<!--                                                        <div class="col-12">-->
+<!--                                                            <h2 class="d-flex align-items-center justify-content-end mb-0" id="totalApplicationsAgency">-->
+<!--                                                                100-->
+<!--                                                            </h2>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+
+<!--                                                </div>-->
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                                        <div class="card l-bg-blue-dark">
+                                            <div class="card-statistic-3 p-4 row">
+                                                <div class="col-4">
+                                                    <img class="img img-fluid" th:src="@{/img/inprogress.png}" alt="progress">
+                                                </div>
+                                                <div class="col-8 row">
+                                                    <div class="col-12">
+                                                        <div class="fs-3 fw-bold text-center w-100">प्रगति में</div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="fs-1 fw-bold text-center w-100 counter" data-target="5000" id="inProgressApplicationsAgency">100</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+<!--                                            <div class="card-statistic-3 p-4 row">-->
+<!--                                                <div class="col-4">-->
+<!--                                                    <img class="img card-logo" th:src="@{/img/inprogress.png}" alt="progress">-->
+<!--                                                </div>-->
+<!--                                                <div class="mb-4 col-8 d-flex justify-content-end">-->
+<!--                                                    &lt;!&ndash;                                            <h4 class="card-title mb-0">IN PROGRESS</h4>&ndash;&gt;-->
+<!--                                                    <h4 class="card-title mb-0">प्रगति में</h4>-->
+<!--                                                </div>-->
+<!--                                                <div class="row align-items-center mb-2 d-flex">-->
+<!--                                                    <div class="col-12">-->
+<!--                                                        <h2 class="d-flex align-items-center justify-content-end mb-0" id="inProgressApplicationsAgency">-->
+<!--                                                            55-->
+<!--                                                        </h2>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                                        <div class="card l-bg-green-dark">
+                                            <div class="card-statistic-3 p-4 row">
+                                                <div class="col-4">
+                                                    <img class="img img-fluid" th:src="@{/img/approve.png}" alt="approved">
+                                                </div>
+                                                <div class="col-8 row">
+                                                    <div class="col-12">
+                                                        <div class="fs-3 fw-bold text-center w-100">स्वीकृत</div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="fs-1 fw-bold text-center w-100 counter" data-target="5000" id="approvedApplicationsAgency">100</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+<!--                                            <div class="card-statistic-3 p-4 row">-->
+<!--                                                <div class="col-4">-->
+<!--                                                    <img class="img card-logo" th:src="@{/img/approve.png}" alt="approved">-->
+<!--                                                </div>-->
+<!--                                                <div class="mb-4 col-8 d-flex justify-content-end">-->
+<!--                                                    &lt;!&ndash;                                            <h4 class="card-title mb-0 text-center">APPROVED</h4>&ndash;&gt;-->
+<!--                                                    <h4 class="card-title mb-0 text-center">स्वीकृत</h4>-->
+<!--                                                </div>-->
+<!--                                                <div class="row align-items-center mb-2 d-flex">-->
+<!--                                                    <div class="col-12">-->
+<!--                                                        <h2 class="d-flex align-items-center justify-content-end mb-0" id="approvedApplicationsAgency">-->
+<!--                                                            25-->
+<!--                                                        </h2>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                                        <div class="card l-bg-orange-dark">
+                                            <div class="card-statistic-3 p-4 row">
+                                                <div class="col-4">
+                                                    <img class="img img-fluid" th:src="@{/img/pending.png}" alt="pending">
+                                                </div>
+                                                <div class="col-8 row">
+                                                    <div class="col-12">
+                                                        <div class="fs-3 fw-bold text-center w-100">लंबित</div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="fs-1 fw-bold text-center w-100 counter" data-target="5000" id="pendingApplicationsAgency">100</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+<!--                                            <div class="card-statistic-3 p-4 row">-->
+<!--                                                <div class="col-4">-->
+<!--                                                    <img class="img card-logo" th:src="@{/img/pending.png}" alt="rejected">-->
+<!--                                                </div>-->
+<!--                                                <div class="mb-4 col-8 d-flex justify-content-end">-->
+<!--                                                    &lt;!&ndash;                                            <h4 class="card-title mb-0 text-center">REJECTED</h4>&ndash;&gt;-->
+<!--                                                    <h4 class="card-title mb-0 text-center">लंबित</h4>-->
+<!--                                                </div>-->
+<!--                                                <div class="row align-items-center mb-2 d-flex">-->
+<!--                                                    <div class="col-12">-->
+<!--                                                        <h2 class="d-flex align-items-center justify-content-end mb-0" id="rejectedApplicationsAgency">-->
+<!--                                                            20-->
+<!--                                                        </h2>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                                        <div class="card l-bg-orange-dark">
+                                            <div class="card-statistic-3 p-4 row">
+                                                <div class="col-4">
+                                                    <img class="img img-fluid" th:src="@{/img/issued.png}" alt="issued">
+                                                </div>
+                                                <div class="col-8 row">
+                                                    <div class="col-12">
+                                                        <div class="fs-3 fw-bold text-center w-100">प्रमाणपत्र प्रदान</div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="fs-1 fw-bold text-center w-100 counter" data-target="5000" id="certificateIssuedAgency">100</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+<!--                                            <div class="card-statistic-3 p-4 row">-->
+<!--                                                <div class="col-4">-->
+<!--                                                    <img class="img card-logo" th:src="@{/img/issued.png}" alt="rejected">-->
+<!--                                                </div>-->
+<!--                                                <div class="mb-4 col-8 d-flex justify-content-end">-->
+<!--                                                    &lt;!&ndash;                                            <h4 class="card-title mb-0 text-center">REJECTED</h4>&ndash;&gt;-->
+<!--                                                    <h4 class="card-title mb-0 text-center">प्रमाणपत्र प्रदान</h4>-->
+<!--                                                </div>-->
+<!--                                                <div class="row align-items-center mb-2 d-flex">-->
+<!--                                                    <div class="col-12">-->
+<!--                                                        <h2 class="d-flex align-items-center justify-content-end mb-0" id="certificateIssuedAgency">-->
+<!--                                                            20-->
+<!--                                                        </h2>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                                        <div class="card l-bg-orange-dark">
+                                            <div class="card-statistic-3 p-4 row">
+                                                <div class="col-4">
+                                                    <img class="img img-fluid" th:src="@{/img/resumbitted.png}" alt="resubmitted">
+                                                </div>
+                                                <div class="col-8 row">
+                                                    <div class="col-12">
+                                                        <div class="fs-3 fw-bold text-center w-100">पुनः दाखिल</div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="fs-1 fw-bold text-center w-100 counter" data-target="5000" id="resubmittedApplicationsAgency">100</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+<!--                                            <div class="card-statistic-3 p-4 row">-->
+<!--                                                <div class="col-4">-->
+<!--                                                    <img class="img card-logo" th:src="@{/img/resumbitted.png}" alt="rejected">-->
+<!--                                                </div>-->
+<!--                                                <div class="mb-4 col-8 d-flex justify-content-end">-->
+<!--                                                    &lt;!&ndash;                                            <h4 class="card-title mb-0 text-center">REJECTED</h4>&ndash;&gt;-->
+<!--                                                    <h4 class="card-title mb-0 text-center">पुनः दाखिल</h4>-->
+<!--                                                </div>-->
+<!--                                                <div class="row align-items-center mb-2 d-flex">-->
+<!--                                                    <div class="col-12">-->
+<!--                                                        <h2 class="d-flex align-items-center justify-content-end mb-0" id="resubmittedApplicationsAgency">-->
+<!--                                                            20-->
+<!--                                                        </h2>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                                        <div class="card l-bg-orange-dark">
+                                            <div class="card-statistic-3 p-4 row">
+                                                <div class="col-4">
+                                                    <img class="img img-fluid" th:src="@{/img/rejected.png}" alt="resubmitted">
+                                                </div>
+                                                <div class="col-8 row">
+                                                    <div class="col-12">
+                                                        <div class="fs-3 fw-bold text-center w-100">अस्वीकृत</div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="fs-1 fw-bold text-center w-100 counter" data-target="5000" id="rejectedApplicationsAgency">100</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+<!--                                            <div class="card-statistic-3 p-4 row">-->
+<!--                                                <div class="col-4">-->
+<!--                                                    <img class="img card-logo" th:src="@{/img/rejected.png}" alt="rejected">-->
+<!--                                                </div>-->
+<!--                                                <div class="mb-4 col-8 d-flex justify-content-end">-->
+<!--                                                    &lt;!&ndash;                                            <h4 class="card-title mb-0 text-center">REJECTED</h4>&ndash;&gt;-->
+<!--                                                    <h4 class="card-title mb-0 text-center">अस्वीकृत</h4>-->
+<!--                                                </div>-->
+<!--                                                <div class="row align-items-center mb-2 d-flex">-->
+<!--                                                    <div class="col-12">-->
+<!--                                                        <h2 class="d-flex align-items-center justify-content-end mb-0" id="pendingApplicationsAgency">-->
+<!--                                                            20-->
+<!--                                                        </h2>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container mt-2">
+                            <div id="applicationsChart"></div>
+                        </div>
+            </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<div th:replace="~{fragment/header.html :: js}"></div>
+<script th:src="@{/js/agencyDashboard.js}"></script>
+</body>
+</html>

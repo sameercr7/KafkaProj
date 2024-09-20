@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+>
+<head th:insert="~{fragment/header.html :: head}">
+    <title>Dashboard</title>
+</head>
+<style>
+    .btn-orange {
+        background-color: orange;
+        color: white;
+    }
+
+</style>
+
+<body>
+
+<div class="container-fluid m-0 p-0">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+    <div class="container-fluid m-0 p-0 d-flex">
+
+        <div th:insert="~{fragment/header.html :: sidebar_dep}"></div>
+
+        <main id="main-content">
+            <div class="container-fluid m-0 p-0 row">
+                <div class="col-12 mt-2">
+                    <div class="card-header row w-100 m-0">
+
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <h1 class="text-center text-md-center mt-3 fw-bolder">आवेदनों की समीक्षा करें</h1>
+                            </div>
+                        </div>
+
+                        <div class="container-fluid mt-2 p-2">
+
+                            <div class="container-fluid p-0 border border-2 shadow card">
+                                <div id="dataTableContainer" class="mt-2 mb-2">
+                                    <table id="example" class="w-100 table table-striped table-bordered table-hover table-responsive">
+                                        <thead>
+                                        <tr>
+                                            <th>क्रम संख्या</th>
+                                            <th>एजेंसी का नाम</th>
+                                            <th>अनापत्ति प्रकार</th>
+                                            <th>तारीख</th>
+                                            <th>स्थिति</th>
+                                            <th>आवेदन देखें</th>
+                                            <th>फ्लोचार्ट</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tableBody">
+                                        <tr th:each="reviewData,index :${reviewData}">
+                                            <td class="text-wrap" th:text="${index.index+1}"></td>
+                                            <td class="text-wrap" th:text="${reviewData.agency_name}"></td>
+                                            <td class="text-wrap" th:text="${reviewData.applied_for}"></td>
+                                            <td class="text-wrap" th:text="${reviewData.date}"></td>
+<!--                                            <td class="text-wrap" th:text="${reviewData.status}"></td>-->
+                                            <td class="text-wrap">
+                                                <button th:if="${reviewData.status == 'APPROVED'}" class="btn btn-success">APPROVED</button>
+                                                <button th:if="${reviewData.status == 'REJECTED'}" class="btn btn-danger">REJECTED</button>
+                                                <button th:if="${reviewData.status == 'IN_PROGRESS'}" class="btn btn-warning">IN PROGRESS</button>
+                                                <button th:if="${reviewData.status == 'PENDING'}" class="btn btn-orange">PENDING</button>
+                                                <button th:if="${reviewData.status == 'ISSUED'}" class="btn btn-secondary">ISSUED</button>
+                                                <button th:unless="${reviewData.status == 'APPROVED' or reviewData.status == 'REJECTED' or reviewData.status == 'IN_PROGRESS' or reviewData.status == 'PENDING' or reviewData.status == 'ISSUED'}" class="btn btn-default"></button>
+                                            </td>
+
+
+
+
+                                            <td>
+                                                <div class="d-flex justify-center text-wrap">
+                                                    <a th:href="@{/noc/viewOnlyApplication(id=${reviewData.id})}">
+                                                        <img src="/img/table.png" alt="Image description" style="height: 30px;">
+                                                    </a>
+                                                </div>
+                                            </td>
+
+
+                                            <td>
+                                               <div class="d-flex justify-center text-wrap">
+                                                   <a th:href="@{/noc/flowchart(id=${reviewData.id})}">
+                                                   <img src="/img/FlowChart_new.png" alt="Image description" style="height: 30px;">
+                                                   </a>
+                                               </div>
+                                           </td>
+
+                                        </tr>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<div th:replace="~{fragment/header.html :: js}"></div>
+
+<script th:src="@{/js/dashboard.js}"></script>
+
+</body>
+</html>
+

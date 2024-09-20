@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}"></head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+
+    <div class="col-12 mt-2">
+        <div class="card-header row w-100 m-0">
+            <h1 class="text-center mt-3 fw-bolder">आवेदन (प्रगति में)</h1>
+            <div class="container-fluid mt-2 p-2">
+                <div class="container-fluid card-border">
+                    <div id="dataTableContainer" class="mt-2 mb-2">
+                        <table id="example" class="w-100 table-responsive">
+                            <thead>
+                            <tr>
+                                <th>क्रम संख्या</th>
+                                <th>एजेंसी का नाम</th>
+                                <th>अनापत्ति प्रकार</th>
+                                <th>तारीख</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Prakash Agency</td>
+                                <td>पुलिया</td>
+                                <td>05/08/2024</td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+<div th:replace="~{fragment/header.html :: js}"></div>
+</body>
+</html>

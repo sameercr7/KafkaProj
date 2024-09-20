@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}"></head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+
+    <div class="col-12 mt-5">
+        <div class="container-fluid">
+            <div class="row flowchart">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">CE 2</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Accepted & Forwaded To SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">03/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Accepted & Forwaded To EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">04/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Rejected & Forwaded To Agency</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">05/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">Abc</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Aplication Resubmitted</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">06/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Accepted & Forwaded To SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">07/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Accepted & Forwaded To CE 2</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">08/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">CE 2</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Accepted & Forwaded To CE 1</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">09/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">CE 1</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Accepted & Granted Permission</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">10/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">CE 1</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter Generated & Forwaded to Agency</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">11/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">Abc</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">12/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">13/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">14/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">15/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">16/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">17/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">18/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">19/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">20/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">21/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">22/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">23/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">24/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">25/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">26/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">27/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="col-3 mb-3 ">-->
+<!--                    <div class="box">-->
+<!--                        <div class="box-content">-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Name:</span>-->
+<!--                                <span class="value">EE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Action:</span>-->
+<!--                                <span class="value">Letter forwaded to  SE</span>-->
+<!--                            </div>-->
+<!--                            <div class="box-row">-->
+<!--                                <span class="label">Date:</span>-->
+<!--                                <span class="value">28/08/2024</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div th:replace="~{fragment/header.html :: js}"></div>
+<script th:src="@{/js/flowchart.js}"></script>
+</body>
+</html>

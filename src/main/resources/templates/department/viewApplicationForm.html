@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+>
+<head th:insert="~{fragment/header.html :: head}">
+
+
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2024.1.317/styles/kendo.default-v2.min.css">
+
+
+</head>
+
+<body class="overflow-x-hidden">
+
+<div class="container-fluid m-0 p-0">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+    <div class="container-fluid p-5">
+        <form enctype="multipart/form-data">
+
+            <div class="container-fluid p-0 border border-2 shadow card row">
+                <div class="mb-4 card-header fw-bolder fs-3 text-center heading">NOC APPLICATION FORM</div>
+
+                <div style=" display: flex; flex-direction: row-reverse;">
+                    <button class="btn btn-primary" type="button" id="combinePdfView " onclick="viewCombinedFile()">View
+                        Application Combine PDF
+                    </button>
+                </div>
+                <div class="card-body">
+
+                    <div id="nocForm" class="form row g-3">
+
+                        <div class="col-3 mb-3" hidden>
+                            <label for="applicationId" class="form-label fw-bold">Application Id</label>
+                            <input type="text" class="form-control" id="applicationId" th:value="${applicationId}"
+                                   name="applicationId" readonly>
+                        </div>
+
+                        <div class="col-4 mb-3">
+                            <label for="nocType" class="form-label fw-bold">NOC Type</label>
+                            <input type="text" class="form-control" id="nocType" name="appliedFor" required readonly>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label for="district" class="form-label fw-bold">District</label>
+                            <input type="text" class="form-control" name="district" id="district" required readonly>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label for="canal" class="form-label fw-bold">Canal</label>
+                            <input type="text" class="form-control" name="canal" id="canal" required readonly>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <label for="ee" class="form-label fw-bold">Executive Engineer</label>
+                            <input type="text" class="form-control" name="executiveEngineer" id="ee" required readonly>
+                        </div>
+                        <div class="col-3 mb-3">
+                            <label for="superintendentEngineer" class="form-label fw-bold">Superintendent
+                                Engineer</label>
+                            <input type="text" class="form-control" id="superintendentEngineer" name="se" required
+                                   readonly>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <label for="chiefEngineer2" class="form-label fw-bold">Chief Engineer - 2</label>
+                            <input type="text" class="form-control" id="chiefEngineer2" name="ce2" required readonly>
+                        </div>
+
+                        <div class="col-3 mb-3">
+                            <label for="chiefEngineer1" class="form-label fw-bold">Chief Engineer - 1</label>
+                            <input type="text" class="form-control" id="chiefEngineer1" name="ce1" required readonly>
+                        </div>
+
+
+                        <h2 class="mt-5 fw-bolder text-center">SELF GENERATED OR ADDITIONAL DOCUMENT/LETTER ATTACHED BY
+                            DEPARTMENT</h2>
+
+                        <table id="dynamicTableForDocument" class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th hidden>hiddenId</th>
+                                <th>Document Description</th>
+                                <th>Attached Pdf/Data</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+
+
+                        <!-- Table for Requirements -->
+                        <h2 class="mt-5 fw-bolder text-center">DOCUMENTS & INFORMATION PROVIDED BY AGENCY</h2>
+                        <table id="dynamicTable" class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Document Description</th>
+                                <th>Attached Pdf/Data</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+
+                        <!--                    <button type="button" class="btn btn-secondary" onclick="printTable()">Print Table</button>-->
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+</div>
+
+<!-- Modal For View Pdf -->
+<!--<div class="modal fade" id="example" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"-->
+<!--     data-bs-backdrop="static" data-bs-keyboard="false">-->
+<!--    <div class="modal-dialog modal-xl">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <div class="container text-center">-->
+<!--                    <h1 class="modal-title fs-5" id="view">PDF</h1>-->
+<!--                </div>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"-->
+<!--                        onclick="removePdfSource()"></button>-->
+<!--            </div>-->
+<!--            <div class="modal-body" style="height: 80vh">-->
+<!--                <embed type="application/pdf" width="100%" height="100%" src="" id="viewFile">-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+<div th:replace="~{fragment/header.html :: js}"></div>
+<script th:inline="javascript" th:src="@{/js/viewNocApplication.js}"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
+
+</body>
+</html>

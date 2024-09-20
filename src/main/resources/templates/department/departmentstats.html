@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}">
+    <title>Dashboard</title>
+</head>
+
+<script>
+    let role = '[[${#authentication.getAuthorities()?.get(0)?.getAuthority()}]]';
+</script>
+
+<style>
+    .gradient{
+        background: linear-gradient(90deg, rgb(244 198 25) 0%, rgb(237 19 124) 100%);
+        /*background: linear-gradient(90deg, rgb(244 198 25) 0%, rgb(243 107 52) 31%, rgb(237 19 124) 64%, rgb(40 143 209) 100%);*/
+        border-radius: 6px;
+        margin: 4px;
+    }
+
+</style>
+<body>
+
+<div class="container-fluid m-0 p-0">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+    <div class="container-fluid m-0 p-0 d-flex">
+        <div th:insert="~{fragment/header.html :: sidebar_dep}"></div>
+
+        <main id="main-content">
+            <div class="container-fluid m-0 p-0 row">
+                <div class="col-12 mt-2">
+                    <div class="card-header row w-100 m-0">
+                        <div class="container-fluid mt-2 p-2 row">
+                            <div class="col-12">
+                                <h1 class="text-center fw-bolder">INTERNAL DEPARTMENT STATISTICS</h1>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+               <div class="table table-responsive">
+
+
+                   <div class="card card_tabs">
+                       <ul class="nav nav-tabs" role="tablist">
+
+                           <li class="gradient text-light" role="presentation" sec:authorize="isAuthenticated() and hasAnyAuthority('admin','ce1')">
+                               <button class="nav-link" onclick="showTable('chiefEngineer1Table')"  role="tab" aria-selected="false">
+                                   <div class="d-flex align-items-center">
+                                       <div class="tab-icon"><i class='fadeIn animated bx bx-folder font-18 me-1'></i></div>
+                                       <div class="tab-title text-light font-weight-bold">Chief Engineer I</div>
+                                   </div>
+                               </button>
+                           </li>
+
+                           <li class="gradient text-light" role="presentation" sec:authorize="isAuthenticated() and hasAnyAuthority('admin','ce1','ce2')">
+                               <button class="nav-link" onclick="showTable('chiefEngineer2Table')" role="tab" aria-selected="false">
+                                   <div class="d-flex align-items-center">
+                                       <div class="tab-icon"><i class='fadeIn animated bx bx-folder font-18 me-1 text-light'></i></div>
+                                       <div class="tab-title text-light font-weight-bold">Chief Engineer II</div>
+                                   </div>
+                               </button>
+                           </li>
+
+                           <li class="gradient text-light" role="presentation" sec:authorize="isAuthenticated() and hasAnyAuthority('admin','ce1','ce2','se')">
+                               <button class="nav-link" onclick="showTable('superintendentEngineerTable')" role="tab" aria-selected="false">
+                                   <div class="d-flex align-items-center">
+                                       <div class="tab-icon"><i class='fadeIn animated bx bx-folder font-18 me-1 text-light'></i></div>
+                                       <div class="tab-title text-light font-weight-bold">SUPERINTENDENT ENGINEER</div>
+                                   </div>
+                               </button>
+                           </li>
+
+                           <li class=" gradient text-light" role="presentation" sec:authorize="isAuthenticated() and hasAnyAuthority('admin','ce1','ce2','se')">
+                               <button class="nav-link" onclick="showTable('executiveEngineer')" role="tab" aria-selected="false">
+                                   <div class="d-flex align-items-center">
+                                       <div class="tab-icon"><i class='fadeIn animated bx bx-folder font-18 me-1 text-light'></i></div>
+                                       <div class="tab-title text-light font-weight-bold">EXECUTIVE ENGINEER</div>
+                                   </div>
+                               </button>
+                           </li>
+
+                       </ul>
+                   </div>
+
+
+                   <div class="internalStats-table col-12 mt-2" id="chiefEngineer1Table"  sec:authorize="isAuthenticated() and hasAnyAuthority('admin','ce1')">
+                       <div class="card-header row w-100 m-0">
+                           <div class="container-fluid mt-2 p-2">
+                               <div class="container-fluid card-border">
+                                   <div id="dataTableContainerce1" class="mt-2 mb-2">
+                                       <h5 class="text-center mt-3 fw-bold">CHEIF ENGINEER I</h5>
+                                       <table id="cheifEngineer1Table" class="w-100 table table-bordered table-hover table-stripped table-responsive">
+                                           <thead>
+                                           <tr>
+                                               <th>NAME</th>
+                                               <th>Rank</th>
+                                               <th>AVG TIME <br>TAKEN TO <br>CLOSE APPLICATION</th>
+                                           </tr>
+                                           </thead>
+                                           <tbody>
+
+                                           </tbody>
+                                       </table>
+                                   </div>
+
+                                   <div id="highchartsContainerce1" class="mt-4" style="width:100%; height:400px;"></div>
+
+                               </div>
+                           </div>
+
+                       </div>
+                   </div>
+
+
+                   <div class="internalStats-table col-12 mt-2" id="chiefEngineer2Table" sec:authorize="isAuthenticated() and hasAnyAuthority('admin','ce1','ce2')">
+                       <div class="card-header row w-100 m-0">
+                           <div class="container-fluid mt-2 p-2">
+                               <div class="container-fluid card-border">
+                                   <div id="dataTableContainer" class="mt-2 mb-2">
+                                       <h5 class="text-center mt-3 fw-bold">CHEIF ENGINEER II</h5>
+                                       <table id="cheifEngineer2Table" class="w-100  table table-bordered table-hover table-stripped table-responsive">
+                                           <thead>
+                                           <tr>
+                                               <th>NAME</th>
+                                               <th>Rank</th>
+                                               <th>AVG TIME <br>TAKEN TO <br>CLOSE APPLICATION</th>
+                                           </tr>
+                                           </thead>
+                                           <tbody>
+
+                                           </tbody>
+                                       </table>
+                                   </div>
+                                   <div id="highchartsContainer" class="mt-4" style="width:100%; height:400px;"></div>
+                               </div>
+                           </div>
+
+                       </div>
+
+                   </div>
+
+
+                   <div class="internalStats-table col-12 mt-2" id="superintendentEngineerTable"  sec:authorize="isAuthenticated() and hasAnyAuthority('admin','ce1','ce2','se')">
+                       <div class="card-header row w-100 m-0">
+                           <div class="container-fluid mt-2 p-2">
+                               <div class="container-fluid card-border">
+                                   <div id="dataTableContainer1" class="mt-2 mb-2">
+                                       <h5 class="text-center mt-3 fw-bolder">SUPERINTENDENT ENGINEER</h5>
+                                       <table id="seTable" class="w-100 table table-bordered table-hover table-stripped table-responsive">
+                                           <thead>
+                                           <tr>
+                                               <th>NAME</th>
+                                               <th>Rank</th>
+                                               <th>AVG TIME <br>TAKEN TO <br>CLOSE APPLICATION</th>
+                                           </tr>
+                                           </thead>
+                                           <tbody>
+
+                                           </tbody>
+                                       </table>
+                                   </div>
+                                   <div id="highchartsContainer1" class="mt-4" style="width:100%; height:400px;"></div>
+                               </div>
+                           </div>
+
+                       </div>
+
+                   </div>
+
+
+                   <div class="internalStats-table col-12 mt-2" id="executiveEngineer">
+                       <div class="card-header row w-100 m-0">
+                           <div class="container-fluid mt-2 p-2">
+                               <div class="container-fluid card-border">
+                                   <div id="dataTableContainer2" class="mt-2 mb-2">
+                                       <h5 class="text-center mt-3 fw-bolder">EXECUTIVE ENGINEER</h5>
+                                       <table id="executiveEngineerTable" class="w-100 table table-bordered table-hover table-stripped table-responsive">
+                                           <thead>
+                                           <tr>
+                                               <th>NAME</th>
+                                               <th>Rank</th>
+                                               <th>AVG TIME <br>TAKEN TO <br>CLOSE APPLICATION</th>
+                                           </tr>
+                                           </thead>
+                                           <tbody>
+
+                                           </tbody>
+                                       </table>
+                                   </div>
+
+                                   <div id="highchartsContainer2" class="mt-4" style="width:100%; height:400px;"></div>
+                               </div>
+                           </div>
+
+                       </div>
+
+                   </div>
+               </div>
+            </div>
+        </main>
+    </div>
+
+</div>
+
+<div th:replace="~{fragment/header.html :: js}"></div>
+<script th:src="@{/js/internalDepartmentStats.js}"></script>
+
+</body>
+</html>
+

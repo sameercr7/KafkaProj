@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}"></head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+    <div class="container-fluid m-0 p-0 d-flex">
+
+        <div th:insert="~{fragment/header.html :: sidebar_agency}"></div>
+
+        <main id="main-content">
+            <div class="container-fluid m-0 p-0 row">
+    <div class="col-12 mt-2">
+
+        <h2 class="text-center fw-bolder">प्रतिक्रिया</h2>
+        <div class="container-fluid p-0 border border-2 shadow card">
+            <div class="card-body">
+                <form action="/data/savingfeedback" method="POST" id="feedbackForm">
+                    <div class="mb-3 row">
+                        <label for="name" class="col-sm-2 col-form-label fw-bold">NAME</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control w-50" id="name" name="name" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="agencyName" class="col-sm-2 col-form-label fw-bold">AGENCY NAME</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control w-50" id="agencyName" name="agencyName" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="description" class="col-sm-2 col-form-label fw-bold ">FEEDBACK</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control w-50 d-flex justify-content-center" id="description" rows="3" name="description" required></textarea>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="uploadImage" class="col-sm-2 col-form-label fw-bold">IMAGE</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control w-50" id="uploadImage" name="uploadImage" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary w-25">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{fragment/header.html :: js}"></div>
+<script th:src="@{/js/postFeedback.js}"></script>
+</body>
+</html>

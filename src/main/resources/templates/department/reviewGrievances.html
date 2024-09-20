@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}"></head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+  <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+  <div class="container-fluid m-0 p-0 d-flex">
+
+      <div th:insert="~{fragment/header.html :: sidebar_dep}"></div>
+
+    <main id="main-content">
+      <div class="container-fluid m-0 p-0 row">
+          <div class="col-12 mt-2">
+
+              <h2 class="text-center fw-bolder">प्रश्न और शिकायतें</h2>
+              <div class="container-fluid p-0 border border-2 shadow card" id="updateForm" style="display: none;">
+                  <div class="card-body">
+                      <form id="updateGrevanceForm">
+                          <input type="hidden" id="formId" name="id">
+                          <div class="mb-3 row">
+                              <label for="formApplicationId" class="col-sm-2 col-form-label fw-bold">APPLICATION ID</label>
+                              <div class="col-sm-10">
+                                  <input type="text" class="form-control w-50" id="formApplicationId" name="applicationId" readonly>
+                              </div>
+                          </div>
+                          <div class="mb-3 row">
+                              <label for="formDescription" class="col-sm-2 col-form-label fw-bold">DESCRIPTION</label>
+                              <div class="col-sm-10">
+                                  <textarea class="form-control w-50 d-flex justify-content-center" id="formDescription" name="description" readonly></textarea>
+                              </div>
+                          </div>
+                          <div class="mb-3 row">
+                              <label for="formReply" class="col-sm-2 col-form-label fw-bold">REPLY</label>
+                              <div class="col-sm-10">
+                                  <textarea class="form-control w-50 d-flex justify-content-center" id="formReply" name="reply" required></textarea>
+                              </div>
+                          </div>
+                          <div class="mb-3 row d-flex justify-content-center">
+                              <button type="submit" class="btn btn-primary w-25">Submit</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+            <div class="col-12 mt-4" >
+                <h4 class="text-center fw-bolder">Grevances LIST</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="orderTable">
+                        <thead>
+                        <tr class="tex-center">
+                            <th>APPLICATION ID</th>
+<!--                            <th>nocType</th>-->
+                            <th>DESCRIPTION</th>
+                            <th>REPLY</th>
+                            <th>ACTION</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- Orders will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+      </div>
+    </main>
+  </div>
+</div>
+<div th:replace="~{fragment/header.html :: js}"></div>
+<script th:src="@{/js/reviewGrevances.js}"></script>
+</body>
+</html>

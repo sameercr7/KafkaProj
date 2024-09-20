@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}"></head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+    <div class="container-fluid m-0 p-0 d-flex">
+
+        <div th:insert="~{fragment/header.html :: sidebar_agency}"></div>
+
+        <main id="main-content">
+            <div class="container-fluid m-0 p-0 row">
+    <div class="col-12 mt-2">
+
+        <h2 class="text-center fw-bolder">प्रश्न और शिकायतें</h2>
+        <div class="container-fluid p-0 border border-2 shadow card">
+            <div class="card-body">
+                <form action="/data/savinggrevance" method="POST" id="grevancesForm">
+                    <div class="mb-3 row">
+                        <label for="applicationId" class="col-sm-2 col-form-label fw-bold">APPLICATION ID</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control w-50" id="applicationId" name="applicationId" required>
+                        </div>
+                    </div>
+<!--                    <div class="mb-3 row">-->
+<!--                        <label for="nocType" class="col-sm-2 col-form-label fw-bold">APPLICATION ID</label>-->
+<!--                        <div class="col-sm-10">-->
+<!--                            <select class="form-select w-50" aria-label="Default select example" name="nocType" id="nocType">-->
+<!--                                <option selected>SELECT NOC TYPE</option>-->
+<!--                                <option value="गैस पाइप लाइन">गैस पाइप लाइन</option>-->
+<!--                                <option value="पेयजल पाइप लाइन">पेयजल पाइप लाइन</option>-->
+<!--                                <option value="पुल">पुल</option>-->
+<!--                                <option value="पुलिया">पुलिया</option>-->
+<!--                                <option value="मार्ग निर्माण">मार्ग निर्माण</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div class="mb-3 row">
+                        <label for="description" class="col-sm-2 col-form-label fw-bold ">DESCRIPTION</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control w-50 d-flex justify-content-center" id="description" rows="3" name="description" required></textarea>
+                        </div>
+                    </div>
+                    <div class="mb-3 row d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary w-25">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-12 mt-4">
+        <h4 class="text-center fw-bolder">GRIEVANCES LIST</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="orderTable">
+                <thead>
+                <tr class="text-center">
+                    <th>APPLICATION ID</th>
+                    <th>DESCRIPTION</th>
+<!--                    <th>nocType</th>-->
+                    <th>REPLY</th>
+                    <th>ACTION</th>
+                </tr>
+                </thead>
+                <tbody class="text-center">
+                <!-- Orders will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+        </main>
+    </div>
+</div>
+<div th:replace="~{fragment/header.html :: js}"></div>
+<script th:src="@{/js/postGrevances.js}"></script>
+</body>
+</html>

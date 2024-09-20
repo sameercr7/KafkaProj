@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--  <link href="../static/css/css.css" rel="stylesheet">-->
+    <link th:href="@{/css/css.css}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons/css/boxicons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <!-- Include jsPDF and jsPDF-AutoTable -->
+
+    <!-- Add html2canvas -->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPDF/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Include Quill stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css" rel="stylesheet">
+
+    <!-- Include jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.3/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.72/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.72/vfs_fonts.js"></script>
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+
+    </style>
+
+</head>
+<body>
+
+<nav th:fragment="top-navbar" class="container-fluid row align-items-center p-0 m-0">
+    <div class="col-12 m-0 p-2 row align-items-center header p-0 w-100">
+        <div class="col-auto">
+            <div class="logo bg-white p-2 rounded-circle">
+                <img class="img imgx2 loginShadow" src="/img/logo-color.png" alt="hshrc" style="height: 100px">
+            </div>
+        </div>
+        <div class="col text-center">
+            <div class="tagline fw-bold px-3">सिंचाई विभाग अनापत्ति प्रमाण पत्र पोर्टल</div>
+        </div>
+        <div class="col-auto">
+            <div class="logo bg-white p-2 rounded-circle">
+                <img class="img imgx2 loginShadow px-2 py-1" src="/img/irrigationLogo.png" alt="hshrc"
+                     style="width: 100px; aspect-ratio: 1">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 my-1 header ">
+        <div class="navbar d-flex justify-content-center flex-wrap p-0 row">
+            <div class="fs-5 fw-bold p-1 d-flex justify-content-center align-items-center" href="javascript:void(0);"
+                 onclick="window.history.back();" style="width: 5% !important;">
+                <span class="material-icons rounded-circle bg-light text-dark fw-bold fs-2 m-0 p-0"
+                      style="aspect-ratio: 1">arrow_back</span>
+            </div>
+            <a class="col fs-5 fw-bold p-2 bg-light w-25" href="#" style="height: 46px;"><span class="px-3"></span></a>
+            <a class="col fs-5 fw-bold p-2" href="/noc/portal"><span class="px-3">Home</span></a>
+            <a class="col fs-5 fw-bold p-2" href="#about"><span class="px-3">About Us</span></a>
+            <a class="col fs-5 fw-bold p-2" href="/noc/dashboard"
+               sec:authorize="isAuthenticated() and !hasAnyAuthority('agency')">
+                <span class="px-3">Dashboard</span>
+            </a>
+            <a class="col fs-5 fw-bold p-2" href="/noc/agency"
+               sec:authorize="isAuthenticated() and hasAnyAuthority('agency')">
+                <span class="px-3">Dashboard</span>
+            </a>
+            <a class="col fs-5 fw-bold p-2 text-nowrap" href="#support"><span class="px-3">Help &amp; Support</span></a>
+            <a class="col fs-5 fw-bold p-2" href="#notifications"><span class="px-3">Notifications</span></a>
+            <a class="col fs-5 fw-bold p-2" href="/noc/login" sec:authorize="!isAuthenticated()">
+                <span class="px-3">Log In</span>
+            </a>
+            <a class="col fs-5 fw-bold p-2" href="/perform_logout" sec:authorize="isAuthenticated()">
+                <span class="px-3">Log Out</span>
+            </a>
+            <a class="col fs-5 fw-bold p-2 bg-light w-25" href="#" style="height: 46px;"><span class="px-3"></span></a>
+            <div class="fs-5 fw-bold p-1  d-flex justify-content-center align-items-center" href="/noc/portal"
+                 style="width: 5% !important;">
+                <span class="material-icons rounded-circle bg-light text-dark fw-bold fs-2 m-0 p-0"
+                      style="aspect-ratio: 1">account_circle</span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<footer th:fragment="footer" class="container-fluid pt-4 mt-0 px-0">
+    <div class="container-fluid mb-4">
+        <div class="row">
+            <div class="col-md-6 vertical-divider">
+                <div class="row">
+                    <div class="col-md-6 vertical-divider px-4">
+                        <div class="logo-part">
+                            <img th:src="@{/img/irrlogo.png}" class="img-fluid bg-light p-3 rounded-4">
+                            <div class="fs-3 fw-bold mt-2 text-light">Sinchai Bhawan, Cantt Road,<br>Udaiganj, Lucknow
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 px-4 text-center">
+                        <div class="fs-4 fw-bold text-light text-underline">Contact Details</div>
+                        <div class="fs-3 fw-bold text-light">+91-522-2614633</div>
+                        <div class="fs-3 fw-bold text-light">eincididuplu-up@nic.in</div>
+                        <div class="mt-4 d-inline-flex">
+                            <a href="https://www.facebook.com/IrrigationUP/" target="_blank">
+                                <img alt="facebook" style="height: 40px; width: 40px" th:src="@{/img/Facebook.svg}"></a>
+                            <a href="https://twitter.com/UPIrrigationWR" target="_blank">
+                                <img alt="X" style="height: 40px; width: 40px" th:src="@{/img/Twiter.svg}"></a>
+                            <a href="https://www.instagram.com/upirrigationdep/" target="_blank">
+                                <img alt="X" style="height: 40px; width: 40px" th:src="@{/img/INSTA.svg}"></a>
+                            <a href="https://www.youtube.com/channel/UCCTZ-FY8PNxBIVx05cb0qhQ" target="_blank">
+                                <img alt="X" style="height: 40px; width: 40px" th:src="@{/img/Youtbe.svg}"></a>
+                        </div>
+
+                        <!--                        <a href="#" class="btn-footer"> More Info </a><br>-->
+                        <!--                        <a href="#" class="btn-footer"> Contact Us</a>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 ">
+                <div class="row">
+                    <div class="col-md-12 px-5">
+                        <form class="form-footer ">
+                            <div class="row text-center  justify-content-center">
+
+                                <h4 class="text-light">Inquiry Form</h4>
+                                <div class="form-group mb-2 col-4">
+                                    <label for="name" class="text-light">Name:</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter your name"
+                                           required>
+                                </div>
+                                <div class="form-group mb-2 col-4">
+                                    <label for="email" class="text-light">Email:</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Enter your email"
+                                           required>
+                                </div>
+                                <div class="form-group mb-2 col-4">
+                                    <label for="phone" class="text-light">Phone Number:</label>
+                                    <input type="tel" class="form-control" id="phone"
+                                           placeholder="Enter your phone number">
+                                </div>
+                                <div class="form-group mb-2 col-12">
+                                    <label for="message" class="text-light">Message:</label>
+                                    <input class="form-control" id="message" rows="4" placeholder="Enter your message"
+                                           required>
+                                </div>
+                                <button type="submit" class="btn btn-warning mt-2 w-50">Submit</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ccontainer-fluid m-0 p-0 glossy-background py-2 text-center">
+        <p class="text-light mb-0 fs-5 fw-bold">
+            &copy; 2024 Gccloud Info System Pvt Ltd. All Rights Reserved.
+        </p>
+    </div>
+</footer>
+
+<aside th:fragment="sidebar_dep" id="sidebar_dep" style="border-right: 3px solid white">
+    <!--            <div class="toggle-btn" onclick="toggleSidebar()">-->
+    <!--                <span class="material-icons">menu</span>-->
+    <!--            </div>-->
+    <!--            <ul>-->
+    <!--                <li><a href="#"></a></li>-->
+    <!--                <li><a href="#">Home</a></li>-->
+    <!--                <li><a href="#">About</a></li>-->
+    <!--                <li><a href="#">Services</a></li>-->
+    <!--                <li><a href="#">Contact</a></li>-->
+    <!--            </ul>-->
+    <div class="d-flex flex-column align-items-center w-100 h-full overflow-hidden text-gray-700 bg-gray-100 ">
+        <a class="flex items-center w-full px-3 mt-3" href="#">
+            <img class="img card-logo" th:src="@{/img/irrlogo.png}" alt="pending">
+            <!--                    <div class="toggle-btn" onclick="toggleSidebar()">-->
+            <!--                        <span class="material-icons">menu</span>-->
+            <!--                    </div>-->
+        </a>
+        <div class="w-full px-2">
+            <div class="flex flex-col items-center w-full mt-3 border-t border-gray-300">
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/dashboard"
+                   sec:authorize="isAuthenticated() and !hasAnyAuthority('agency')">
+
+                    <span class="ml-2 text-sm font-medium text-nowrap material-symbols-outlined">Dashboard</span>
+                    <span class="ml-2 text-sm font-medium text-nowrap">Dashboard</span>
+                </a>
+                <!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/documentview" sec:authorize="isAuthenticated() and !hasAnyAuthority('agency')">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6M5 5a2 2 0 012-2h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5z"></path>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">Document View</span>-->
+                <!--                </a>-->
+                <!--                <a class="flex items-center w-full h-12 px-1 mt-2 bg-gray-300 rounded" href="/noc/pdfview" sec:authorize="isAuthenticated() and !hasAnyAuthority('agency')">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"></path>-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 2v6h6"></path>-->
+                <!--                        <text x="8" y="15" font-size="5" fill="currentColor" font-weight="bold">PDF</text>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">PDF View</span>-->
+                <!--                </a>-->
+                <!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/changetable" sec:authorize="isAuthenticated() and !hasAnyAuthority('agency')">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">Document Logs</span>-->
+                <!--                </a>-->
+                <!--            </div>-->
+                <!--            <div class="flex flex-col items-center w-full mt-2 border-t border-gray-300">-->
+                <!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/reviewApplications">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a7 7 0 100 14 7 7 0 000-14zM21 21l-4.35-4.35"></path>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">Review Application</span>-->
+                <!--                </a>-->
+                <!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/transfer">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">Application Transfer</span>-->
+                <!--                </a>-->
+                <!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/newapplication">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">New Application</span>-->
+                <!--                </a>-->
+
+                <!--           Application Report-->
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"
+                   href="/noc/reviewApplications">
+                    <span class="material-symbols-outlined">lab_profile</span>
+                    <span class="ml-2 text-sm font-medium">Search Application</span>
+                </a>
+
+
+                <!--          Assigned Application-->
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/transfer">
+                    <span class="material-symbols-outlined">
+                    assignment_add
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Forward/Reject Applications</span>
+                </a>
+
+                <!--            Application Review -->
+                <!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/reviewApplications">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">Application Review</span>-->
+                <!--                </a>-->
+
+                <!--             Application Track -->
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"
+                   href="/noc/applicationtrack">
+                    <span class="material-symbols-outlined">
+                    timeline
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Track Application</span>
+                </a>
+
+
+                <!--             Resubmitted Applications -->
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"
+                   href="/noc/applicationresubmitted">
+                    <span class="material-symbols-outlined">
+                    description
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Resubmitted Applications</span>
+                </a>
+
+                <!--                &lt;!&ndash;             Application Closed &ndash;&gt;-->
+                <!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"-->
+                <!--                   href="/noc/applicationclosed">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none"-->
+                <!--                         viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+                <!--                              d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">Application Closed</span>-->
+                <!--                </a>-->
+
+
+                <!--                &lt;!&ndash;              Application Rejected&ndash;&gt;-->
+                <!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"-->
+                <!--                   href="/noc/applicationrejected">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none"-->
+                <!--                         viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+                <!--                              d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">Application Rejected</span>-->
+                <!--                </a>-->
+
+
+                <!--                &lt;!&ndash;              Application Approved&ndash;&gt;-->
+                <!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"-->
+                <!--                   href="/noc/applicationapproved">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none"-->
+                <!--                         viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+                <!--                              d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">Application Approved</span>-->
+                <!--                </a>-->
+
+
+                <!--               Associated Letters-->
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"
+                   href="/noc/trackAppForDep">
+                    <span class="material-symbols-outlined">
+                    monitoring
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Track Application Letters</span>
+                </a>
+
+
+                <!--               NOC Issued-->
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/nocissued">
+                    <span class="material-symbols-outlined">
+                    file_copy
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Issued NOC Records</span>
+                </a>
+
+
+                <!--                NOC Issuance Order/Certificate-->
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/noccertificate">
+                    <span class="material-symbols-outlined">
+                    card_membership
+                    </span>
+                    <span class="ml-2 text-sm font-medium">NOC Issuance Certificate</span>
+                </a>
+
+
+                <!--                Internal Departmental Statistics-->
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"
+                   href="/noc/departmentstats">
+                    <span class="material-symbols-outlined">
+                    leaderboard
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Internal Departmental Statistics</span>
+                </a>
+
+
+                <!--                Application Analytics-->
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/analytics">
+                    <span class="material-symbols-outlined">
+                    analytics
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Application Analytics</span>
+                </a>
+
+                <!--                Post Orders-->
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/postorder"
+                   sec:authorize="isAuthenticated() and hasAnyAuthority('admin')">
+                    <span class="material-symbols-outlined">
+                    mark_as_unread
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Post Departmental Orders</span>
+                </a>
+                <!--                Review Queries-->
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/reviewgrievances"
+                   sec:authorize="isAuthenticated() and hasAnyAuthority('admin')">
+                    <span class="material-symbols-outlined">
+                        forum
+                        </span>
+                    <span class="ml-2 text-sm font-medium">Review Queries</span>
+                </a>
+
+                <!--                Office Wise Report  -->
+
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"
+                   href="/noc/officeWiseReport" sec:authorize="isAuthenticated() and hasAnyAuthority('admin','ce1','ce2','se')" >
+                    <span class="material-symbols-outlined">
+                    local_police
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Officer Wise Report</span>
+                </a>
+
+
+
+
+
+                <!--                Review Feedback-->
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/reviewfeedback"
+                   sec:authorize="isAuthenticated() and hasAnyAuthority('admin')">
+                    <span class="material-symbols-outlined">
+                    add_comment
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Review Feedback</span>
+                </a>
+                <!--                Feedback-->
+                <!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/postorder">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">Feedback</span>-->
+                <!--                </a>-->
+
+                <a class="flex items-center w-full px-3 mt-3" href="#">
+                    <img class="img" th:src="@{/img/logo-color.png}" alt="pending" style="height: 130px;">
+                    <!--                    <div class="toggle-btn" onclick="toggleSidebar()">-->
+                    <!--                        <span class="material-icons">menu</span>-->
+                    <!--                    </div>-->
+                </a>
+                <!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="#">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">Settings</span>-->
+                <!--                </a>-->
+                <!--                <a class="relative flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-300" href="#">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">Messages</span>-->
+                <!--                    <span class="absolute top-0 left-0 w-2 h-2 mt-2 ml-2 bg-indigo-500 rounded-full"></span>-->
+                <!--                </a>-->
+            </div>
+        </div>
+        <!--        <a class="flex items-center justify-center w-full h-16 mt-auto bg-gray-200 hover:bg-gray-300" href="#">-->
+        <!--            <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+        <!--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>-->
+        <!--            </svg>-->
+        <!--            <span class="ml-2 text-sm font-medium">Account</span>-->
+        <!--        </a>-->
+    </div>
+</aside>
+
+<aside th:fragment="sidebar_agency" id="sidebar_agency" style="border-right: 3px solid white">
+    <!--            <div class="toggle-btn" onclick="toggleSidebar()">-->
+    <!--                <span class="material-icons">menu</span>-->
+    <!--            </div>-->
+    <!--            <ul>-->
+    <!--                <li><a href="#"></a></li>-->
+    <!--                <li><a href="#">Home</a></li>-->
+    <!--                <li><a href="#">About</a></li>-->
+    <!--                <li><a href="#">Services</a></li>-->
+    <!--                <li><a href="#">Contact</a></li>-->
+    <!--            </ul>-->
+    <div class="d-flex flex-column align-items-center w-100 h-full overflow-hidden text-gray-700 bg-gray-100 ">
+        <a class="flex items-center w-full px-3 mt-3" href="#">
+            <img class="img card-logo" th:src="@{/img/irrlogo.png}" alt="pending">
+            <!--                    <div class="toggle-btn" onclick="toggleSidebar()">-->
+            <!--                        <span class="material-icons">menu</span>-->
+            <!--                    </div>-->
+        </a>
+        <div class="w-full px-2">
+            <div class="flex flex-col items-center w-full mt-3 border-t border-gray-300">
+
+                <!--                Dashboard-->
+
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/agency">
+                    <span class="ml-2 text-sm font-medium text-nowrap material-symbols-outlined">Dashboard</span>
+                    <span class="ml-2 text-sm font-medium text-nowrap">Dashboard</span>
+                </a>
+
+                <!--                Apply For New Noc-->
+
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/nocCards">
+                   <span class="material-symbols-outlined">
+                    note_add
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Apply For New Noc</span>
+                </a>
+
+                <!--                Application Submitted-->
+
+
+<!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"-->
+<!--                   href="/noc/agency_application">-->
+<!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none"-->
+<!--                         viewBox="0 0 24 24" stroke="currentColor">-->
+<!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"-->
+<!--                              d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>-->
+<!--                    </svg>-->
+<!--                    <span class="ml-2 text-sm font-medium">Application Submitted</span>-->
+<!--                </a>-->
+
+
+                <!--                Track Application-->
+
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/agency_track">
+                    <span class="material-symbols-outlined">
+                    timeline
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Track Application</span>
+                </a>
+
+                <!--           Application Report-->
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"
+                   href="/noc/agencyReviewApplication">
+                   <span class="material-symbols-outlined">
+                    description
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Application Report</span>
+                </a>
+
+
+                <!--            Request of ReSubmission-->
+
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"
+                   href="/noc/agency_resubmission">
+                  <span class="material-symbols-outlined">
+                    post_add
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Request of ReSubmission</span>
+                </a>
+
+
+                <!--            Application Approved-->
+
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"
+                   href="/noc/agency_approved">
+                    <span class="material-symbols-outlined">
+                        thumb_up
+                        </span>
+                    <span class="ml-2 text-sm font-medium">Application Approved</span>
+                </a>
+
+                <!--            Application Rejected-->
+
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"
+                   href="/noc/agency_rejected">
+                   <span class="material-symbols-outlined">
+                thumb_down
+                </span>
+                    <span class="ml-2 text-sm font-medium">Application Rejected</span>
+                </a>
+
+                <!--            Noc Issued -->
+
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/agency_noc">
+                    <span class="material-symbols-outlined">
+                        verified
+                        </span>
+                    <span class="ml-2 text-sm font-medium">Noc Issued</span>
+                </a>
+
+
+                <!--           Queries And Grievances -->
+
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"
+                   href="/noc/agency_grevances">
+                    <span class="material-symbols-outlined">
+                        forum
+                        </span>
+                    <span class="ml-2 text-sm font-medium">Queries And Grievances</span>
+                </a>
+
+                <!--          Notification -->
+
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/">
+                    <span class="material-symbols-outlined">
+                    notifications
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Notification</span>
+                </a>
+
+                <!--          Department Orders -->
+
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/orders">
+                     <span class="material-symbols-outlined">
+                    mark_as_unread
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Department Orders</span>
+                </a>
+
+                <!--          Associated letters -->
+
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="/noc/trackAppForAgency">
+                    <span class="material-symbols-outlined">
+                    monitoring
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Track Application Letters</span>
+                </a>
+                <!--          Feedback -->
+
+                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300"
+                   href="/noc/agency_feedback">
+                   <span class="material-symbols-outlined">
+                    add_comment
+                    </span>
+                    <span class="ml-2 text-sm font-medium">Feedback</span>
+                </a>
+
+
+                <!--                <a class="flex items-center w-full h-12 px-1 mt-2 bg-gray-300 rounded" href="/noc/agency_application">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">My Application</span>-->
+                <!--                </a>-->
+                <a class="flex items-center w-full px-3 mt-3" href="#">
+                    <img class="img" th:src="@{/img/logo-color.png}" alt="pending" style="height: 130px;">
+                    <!--                    <div class="toggle-btn" onclick="toggleSidebar()">-->
+                    <!--                        <span class="material-icons">menu</span>-->
+                    <!--                    </div>-->
+                </a>
+                <!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="#">-->
+                <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+                <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"></path>-->
+                <!--                    </svg>-->
+                <!--                    <span class="ml-2 text-sm font-medium">Docs</span>-->
+                <!--                </a>-->
+            </div>
+            <!--            <div class="flex flex-col items-center w-full mt-2 border-t border-gray-300">-->
+            <!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="#">-->
+            <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+            <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>-->
+            <!--                    </svg>-->
+            <!--                    <span class="ml-2 text-sm font-medium">Products</span>-->
+            <!--                </a>-->
+            <!--                <a class="flex items-center w-full h-12 px-1 mt-2 rounded hover:bg-gray-300" href="#">-->
+            <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+            <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>-->
+            <!--                    </svg>-->
+            <!--                    <span class="ml-2 text-sm font-medium">Settings</span>-->
+            <!--                </a>-->
+            <!--                <a class="relative flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-300" href="#">-->
+            <!--                    <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+            <!--                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>-->
+            <!--                    </svg>-->
+            <!--                    <span class="ml-2 text-sm font-medium">Messages</span>-->
+            <!--                    <span class="absolute top-0 left-0 w-2 h-2 mt-2 ml-2 bg-indigo-500 rounded-full"></span>-->
+            <!--                </a>-->
+            <!--            </div>-->
+        </div>
+        <!--        <a class="flex items-center justify-center w-full h-16 mt-auto bg-gray-200 hover:bg-gray-300" href="#">-->
+        <!--            <svg class="w-6 h-6 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">-->
+        <!--                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>-->
+        <!--            </svg>-->
+        <!--            <span class="ml-2 text-sm font-medium">Account</span>-->
+        <!--        </a>-->
+    </div>
+</aside>
+<!--Commit-->
+<div th:fragment="js">
+
+    <script th:src="@{/js/globaljs.js}"></script>
+
+<!--  --------------------------------------------------Script is for Only Showing Dynamic Cards-->
+    <script>
+        // Fetch NOC data from backend
+        fetch('/data/nocList')
+            .then(response => response.json())  // Corrected: Added () after json to properly call it
+            .then(data => {
+                console.log("data is:", data);
+                const nocMappedList = data.data.nocMappedList;  // Extract NOC list data
+                console.log("data", data.data.nocMappedList);
+                populateNocCards(nocMappedList);  // Call the function to populate the cards
+            })
+            .catch(error => console.error('Error fetching NOC list:', error));
+
+        function populateNocCards(nocList) {
+            const container = document.getElementById('nocCardsContainer');
+            nocList.forEach(noc => {
+                // Create card structure
+                const colDiv = document.createElement('div');
+                colDiv.classList.add('col-12', 'col-sm-6', 'col-md-4', 'col-lg-2');
+
+                const anchor = document.createElement('a');
+                anchor.classList.add('text-decoration-none');
+                anchor.href = `/noc/form?heading=${encodeURIComponent(noc.nocName)}`;  // Dynamically set the link with heading
+
+                const cardDiv = document.createElement('div');
+                cardDiv.classList.add('card', 'radius-10', );
+                cardDiv.style.minHeight = '290px';
+
+                const cardBodyDiv = document.createElement('div');
+                cardBodyDiv.classList.add('card-body', 'shadow-lg');
+
+                const textCenterDiv = document.createElement('div');
+                textCenterDiv.classList.add('text-center');
+
+                const widgetDiv = document.createElement('div');
+                widgetDiv.classList.add('widgets-icons', 'rounded-circle', 'mx-auto', 'mb-3');
+
+                // Use the same image for all cards
+                const img = document.createElement('img');
+                img.src = noc.cardsIconEndPoint;  // Use the image path from the noc object
+                img.alt = noc.nocName;
+
+
+                const headingH3 = document.createElement('h3');
+                headingH3.classList.add('my-1', 'fw-bold');
+
+                const headingStrong = document.createElement('strong');
+                headingStrong.textContent = noc.nocName;  // Set the heading text
+
+                // Append the elements in the correct hierarchy
+                widgetDiv.appendChild(img);
+                headingH3.appendChild(headingStrong);
+                textCenterDiv.appendChild(widgetDiv);
+                textCenterDiv.appendChild(headingH3);
+                cardBodyDiv.appendChild(textCenterDiv);
+                cardDiv.appendChild(cardBodyDiv);
+                anchor.appendChild(cardDiv);
+                colDiv.appendChild(anchor);
+
+                // Append the card to the container
+                container.appendChild(colDiv);
+            });
+        }
+    </script>
+
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- jQuery (required for Kendo UI) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--     <script th:src="@{/js/signln.js}"></script>-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
+    <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
+</div>
+</body>
+</html>

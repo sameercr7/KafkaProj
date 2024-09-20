@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}">
+</head>
+<style>
+    .container-fluid.min-vh-100 {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+</style>
+<body>
+
+<div class="container-fluid m-0 p-0 d-flex flex-column vh-100">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+
+    <div class="col-12 h-50 menu_bg">
+        <div class="row m-0 p-0 h-100">
+
+            <!-- Card for AGENCY LOGIN -->
+            <div class="col-6 d-flex justify-content-center align-items-center h-100">
+                <a class="card text-center p-3 w-50 h-75 glass-card" data-bs-toggle="modal" data-bs-target="#staticBackdrop5" style="cursor: pointer;">
+                    <!-- Icon -->
+                    <div class="logo-container m-4">
+                        <div class="logo-front">
+                            <img src="/img/logo-color.png" class="logo_login" alt="Irrigation Logo">
+                        </div>
+                        <div class="logo-back">
+                            <img src="/img/irrigationLogo.png" class="logo_login p-2" alt="Mahakumbh Logo">
+                        </div>
+                    </div>
+
+                    <h5 class="text-dark fs-1 fw-bold">AGENCY LOGIN</h5>
+                </a>
+            </div>
+
+            <!-- Card for DEPARTMENT LOGIN -->
+            <div class="col-6 d-flex justify-content-center align-items-center h-100">
+                <a class="card text-center p-3 w-50 h-75 glass-card text-decoration-none" th:href="@{/noc/departmentlogin}" style="cursor: pointer;">
+
+                    <div class="logo-container m-4">
+                        <div class="logo-front">
+                            <img src="/img/irrigationLogo.png" class="logo_login p-2" alt="Mahakumbh Logo">
+                        </div>
+                        <div class="logo-back">
+                            <img src="/img/logo-color.png" class="logo_login " alt="Irrigation Logo">
+                        </div>
+                    </div>
+                    <h5 class="text-dark fs-1 fw-bold">DEPARTMENT LOGIN</h5>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+    <div th:replace="~{fragment/header.html :: footer}"></div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal top fade" id="staticBackdrop5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-mdb-backdrop="true" data-mdb-keyboard="true">
+    <div class="modal-dialog modal-dialog-centered text-center d-flex justify-content-center">
+        <div class="modal-content w-75">
+            <div class="modal-body p-4">
+                <img th:src="@{/img/handshake.jpg}" alt="avatar" class="rounded-circle position-absolute top-0 start-50 translate-middle h-50" />
+                <form action="/process_login" method="post">
+                    <div>
+                        <h5 class="pt-5 my-3 mt-5">AGENCY LOGIN</h5>
+
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <label class="form-label fw-bolder" for="username">USERNAME</label>
+                            <input type="text" id="username" name="username" class="form-control" />
+
+                        </div>
+                        <!-- password input -->
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <label class="form-label fw-bolder" for="password1">PASSWORD</label>
+                            <input type="password" id="password1" name="password" class="form-control" />
+
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">LOGIN</button>
+                    </div>
+                    <a th:href="@{/noc/forgotpassword}" class="text-decoration-none">FORGOT PASSWORD</a>
+                    <p>Don't have an account?    <a th:href="@{/noc/signup}" class="text-decoration-none">SIGN UP</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+<div th:replace="~{fragment/header.html :: js}"></div>
+</body>
+</html>

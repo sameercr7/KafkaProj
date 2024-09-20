@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}"></head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+    <div class="container-fluid m-0 p-0 d-flex">
+
+        <div th:insert="~{fragment/header.html :: sidebar_dep}"></div>
+
+        <main id="main-content">
+            <div class="container-fluid m-0 p-0 row">
+                <div class="col-12 mt-2">
+                    <div class="card-header row w-100 m-0">
+                        <div class="container-fluid mt-2 p-2 row">
+                            <div class="col-6">
+                                <h1 class="text-left mt-3 fw-bolder">अनापत्ति प्रमाण पत्र जारी की गई</h1>
+                            </div>
+                            <div class="col-6 d-flex align-items-center justify-content-end">
+                                <select id="financial-year-select" class="form-select w-50 card-border text-center" aria-label="Default select example">
+                                    <!-- Options will be populated by JavaScript -->
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-12 mt-2">
+                    <div class="card-header row w-100 m-0">
+                        <div class="container-fluid mt-2 p-2">
+                            <div class="container-fluid card-border">
+                                <div id="dataTableContainer" class="mt-2 mb-2">
+                                    <table id="example" class="w-100 table-responsive">
+                                        <thead>
+                                        <tr>
+                                            <th>Agency Name</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>View File</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tableBody">
+                                        <tr>
+                                            <td>Prakash Agency</td>
+                                            <td>05/08/2024</td>
+                                            <td>NOC Issued</td>
+                                            <td><button class="btn btn-success">View</button></td>
+
+                                        </tr>
+                                        <!-- Add more rows as needed -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Modal For View Pdf -->
+<div class="modal fade" id="pdfView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+     data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="container text-center">
+                    <h1 class="modal-title fs-5" id="view">PDF</h1>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="removePdfSource()"></button>
+            </div>
+            <div class="modal-body" style="height: 80vh">
+                <embed type="application/pdf" width="100%" height="100%" src="" id="viewFile">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/nocIssued.js}"></script>
+<script th:src="@{/js/dashboard.js}"></script>
+<div th:replace="~{fragment/header.html :: js}"></div>
+</body>
+</html>

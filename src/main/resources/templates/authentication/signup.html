@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}">
+    <title>Signup</title>
+</head>
+
+<body>
+<div th:insert="~{fragment/header.html :: top-navbar}"></div>
+<section class=" py-3 py-md-5">
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-7 col-xxl-6">
+                <h1 class="mb-4 display-5 text-center fw-bolder shadow-lg p-3 mb-5 rounded"
+                    style="backdrop-filter: blur(10px);">SIGNUP</h1>
+                <h5 class="text-secondary mb-5 text-center">Enter Your Credentials.</h5>
+                <hr class="w-50 mx-auto mb-5 mb-xl-9 border-dark-subtle">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-lg-center">
+            <div class="col-12 col-lg-9">
+                <div class="bg-white border rounded shadow-sm overflow-hidden">
+
+                    <form id="signUpForm" >
+                        <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
+                            <div class="col-12 col-md-4">
+                                <label for="agencyName" class="form-label fw-bold">AGENCY NAME <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-group">
+                  <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-person" viewBox="0 0 16 16">
+                      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    </svg>
+                  </span>
+                                    <input type="text" class="form-control" id="agencyName" name="agencyName" required>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-4">
+                                <label for="fullName" class="form-label fw-bold">NAME <span class="text-danger">*</span></label>
+                                <div class="input-group">
+                  <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-person" viewBox="0 0 16 16">
+                      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    </svg>
+                  </span>
+                                    <input type="text" class="form-control" id="fullName" name="fullName" required>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-4">
+                                <label for="username" class="form-label fw-bold">USERNAME<span
+                                        class="text-danger">*</span></label>
+                                <div class="input-group">
+                  <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-person" viewBox="0 0 16 16">
+                      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    </svg>
+                  </span>
+                                    <input type="text" class="form-control" id="username" name="username" required>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-4">
+                                <label for="email" class="form-label fw-bold">EMAIL <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-envelope" viewBox="0 0 16 16">
+                      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                    </svg>
+                  </span>
+                                    <input type="email" class="form-control" id="email" name="emailId" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label for="mobile" class="form-label fw-bold">MOBILE NO <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-group">
+                                     <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-phone" viewBox="0 0 16 16">
+  <path d="M11 1H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm0 12H5V3h6v10zM7.5 12.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm.5-1.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1 0-1z"/>
+</svg>
+
+                  </span>
+                                    <input type="number" class="form-control" id="mobile" maxlength="10" name="mobile">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label for="password" class="form-label fw-bold">PASSWORD <span
+                                        class="text-danger">*</span></label>
+                                <div class="input-group">
+                                      <span class="input-group-text">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                               fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+                                            <path d="M8 1a3 3 0 0 0-3 3v3H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-1V4a3 3 0 0 0-3-3zm0 1a2 2 0 0 1 2 2v3H6V4a2 2 0 0 1 2-2zm-4 7v4a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1z"/>
+                                          </svg>
+                                         </span>
+                                    <input type="password" class="form-control" id="password" name="password">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-4">
+                                <label for="address" class="form-label fw-bold">ADDRESS<span
+                                        class="text-danger">*</span></label>
+                                <div class="input-group">
+                  <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-person" viewBox="0 0 16 16">
+                      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    </svg>
+                  </span>
+                                    <input type="text" class="form-control" id="address" name="address" required>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="d-grid">
+                                    <button class="btn btn-primary btn-lg" type="submit" disabled>SIGNUP</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script th:src="@{/js/signUp.js}"></script>
+<div th:replace="~{fragment/header.html :: footer}"></div>
+<div th:replace="~{fragment/header.html :: js}"></div>
+</body>
+</html>

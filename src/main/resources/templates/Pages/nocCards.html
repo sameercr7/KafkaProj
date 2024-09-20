@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+>
+<head th:insert="~{fragment/header.html :: head}"></head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+
+    <div class="container-fluid m-0 p-0 d-flex">
+        <div th:insert="~{fragment/header.html :: sidebar_agency}"></div>
+        <main id="main-content">
+            <div class="container-fluid m-0 p-0 row">
+                <div class="col-12 mt-2">
+                    <h1 class="card-title  text-dark text-center mb-2 fw-bolder">अनापत्ति प्रमाण पत्र चुनें</h1>
+                    <div class="card-header row w-100 m-0">
+                        <div class="container mt-2">
+                            <div class="container-fluid ">
+<!--                                <div class="row mt-5">-->
+<!--                                    <div class="col">-->
+<!--                                        <a class="text-decoration-none" th:href="@{/noc/form(heading='गैस पाइप लाइन')}">-->
+<!--                                            <div class="card radius-10">-->
+<!--                                                <div class="card-body shadow-lg">-->
+<!--                                                    <div class="text-center">-->
+<!--                                                        <div class="widgets-icons rounded-circle mx-auto mb-3">-->
+<!--                                                            <img src="/img/gas.png"/>-->
+<!--                                                        </div>-->
+<!--                                                        <h3 class="my-1 fw-bold"><strong>गैस पाइप लाइन</strong></h3>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </a>-->
+
+<!--                                    </div>-->
+<!--                                    <div class="col">-->
+<!--                                        <a class="text-decoration-none"-->
+<!--                                           th:href="@{/noc/form(heading='पेयजल पाइप लाइन')}">-->
+<!--                                            <div class="card radius-10">-->
+<!--                                                <div class="card-body shadow-lg">-->
+<!--                                                    <div class="text-center">-->
+<!--                                                        <div class="widgets-icons rounded-circle mx-auto mb-3">-->
+<!--                                                            <img src="/img/water.png"/>-->
+<!--                                                        </div>-->
+
+<!--                                                        <h3 class="my-1 fw-bold"><strong>पेयजल पाइप लाइन</strong></h3>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                    <div class="col">-->
+<!--                                        <a class="text-decoration-none" th:href="@{/noc/form(heading='पुल')}">-->
+<!--                                            <div class="card radius-10">-->
+<!--                                                <div class="card-body shadow-lg">-->
+<!--                                                    <div class="text-center">-->
+<!--                                                        <div class="widgets-icons rounded-circle mx-auto mb-3">-->
+<!--                                                            <img src="/img/bridge.png"/>-->
+<!--                                                        </div>-->
+
+<!--                                                        <h3 class="my-1 fw-bold"><strong>पुल</strong></h3>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                    <div class="col">-->
+<!--                                        <a class="text-decoration-none" th:href="@{/noc/form(heading='पुलिया')}">-->
+<!--                                            <div class="card radius-10 shadow-lg">-->
+<!--                                                <div class="card-body">-->
+<!--                                                    <div class="text-center">-->
+<!--                                                        <div class="widgets-icons rounded-circle mx-auto mb-3">-->
+<!--                                                            <img src="/img/puliya.png"/>-->
+<!--                                                        </div>-->
+
+<!--                                                        <h3 class="my-1 fw-bold"><strong>पुलिया</strong></h3>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                    <div class="col">-->
+<!--                                        <a class="text-decoration-none" th:href="@{/noc/form(heading='मार्ग निर्माण')}">-->
+<!--                                            <div class="card radius-10 shadow-lg">-->
+<!--                                                <div class="card-body">-->
+<!--                                                    <div class="text-center">-->
+<!--                                                        <div class="widgets-icons rounded-circle mx-auto mb-3">-->
+<!--                                                            <img src="/img/road.png"/>-->
+<!--                                                        </div>-->
+<!--                                                        <h3 class="my-1 fw-bold"><strong>मार्ग निर्माण</strong></h3>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+
+                                <div id="nocCardsContainer" class="row mt-5">
+                                    <!-- Cards will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<div th:replace="~{fragment/header.html :: js}"></div>
+</body>
+</html>

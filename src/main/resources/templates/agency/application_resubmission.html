@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}"></head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+
+    <div class="container-fluid m-0 p-0 d-flex">
+        <div th:insert="~{fragment/header.html :: sidebar_agency}"></div>
+        <main id="main-content">
+            <div class="container-fluid m-0 p-0 row">
+                <div class="col-12 mt-2">
+                    <div class="card-header row w-100 m-0">
+                        <div class="container-fluid mt-2 p-2 row">
+                            <div class="col-6 d-flex align-items-center">
+                                <h1 class="card-title  text-dark text-left mb-2 fw-bolder">आवेदन की स्थिति</h1>
+                            </div>
+                            <div class="col-6 d-flex align-items-center justify-content-end">
+                                <select id="financial-year-select" class="form-select w-50 card-border text-center" aria-label="Default select example">
+                                    <!-- Options will be populated by JavaScript -->
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-12 mt-2">
+                    <div class="card-header row w-100 m-0">
+                        <div class="container-fluid mt-2 p-2">
+                            <div class="container-fluid card-border">
+                                <div id="dataTableContainer" class="mt-2 mb-2">
+                                    <table id="example" class="w-100 table-responsive">
+                                        <thead>
+                                        <tr>
+                                            <th>एनओसी का प्रकार</th>
+                                            <th>आवेदन स्थिति</th>
+                                            <th>निरीक्षण स्तर</th>
+                                            <th>आवेदन दिनांक</th>
+                                            <th>स्थिति</th>
+                                            <th>फ़ाइल</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tableBody">
+                                        <tr>
+                                            <td>जल आवंटन</td>
+                                            <td>In Progress</td>
+                                            <td>SE</td>
+                                            <td>05/08/2024</td>
+                                            <td><button class="btn btnprimary">FILE</button> </td>
+
+                                            <!--                                <td><button class="btn btn-light"><span> <img class="img card-logo" th:src="@{/img/pdf.png}" alt="rejected"></span></button></td>-->
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<div th:replace="~{fragment/header.html :: js}"></div>
+<script th:src="@{/js/agencyApplicationResubmission.js}"></script>
+<script th:src="@{/js/dashboard.js}"></script>
+</body>
+</html>

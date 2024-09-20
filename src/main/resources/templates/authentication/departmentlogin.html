@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="~{fragment/header.html :: head}">
+
+</head>
+<body>
+
+<div class="container-fluid m-0 p-0 d-flex flex-column vh-100">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+    <div class="container-fluid menu_bg p-5">
+        <div class="row justify-content-center">
+            <div class="col-xl-10">
+<!--                <div class="card border-0">-->
+                    <div class="card-body p-0">
+                        <div class="row no-gutters">
+                            <div class="col-lg-12 d-flex justify-content-center">
+                                <div class="p-5 text-center w-50">
+                                    <div class="mb-5">
+                                        <h2 class="fw-bold text-theme text-center text-primary">विभाग लॉगिन</h2>
+                                    </div>
+                                        <form class="pt-3 custom-shadow" id="department-form" action="/process_login" method="post">
+                                            <h5>SELECT YOUR DESIGNATION</h5>
+                                            <div class="form-group">
+                                                <select class="form-control form-control-lg select2-container--default mb-2" id="designationSelect" onchange="processLogin(this.value)" >
+                                                    <option value="" selected>Select Designation</option>
+                                                    <option value="CHIEF WATER RESOURCE (ADMIN)">CHIEF WATER RESOURCE (ADMIN)</option>
+                                                    <option value="HOD">HOD</option>
+                                                    <option value="deputyAdmin">DEPUTY ADMIN</option>
+                                                    <option value="subAdmin">SUB ADMIN</option>
+                                                    <option value="CE I">CHIEF ENGINEER I</option>
+                                                    <option value="CE II">CHIEF ENGINEER II</option>
+                                                    <option value="SE">SUPERINTENDENT ENGINEER</option>
+                                                    <option value="EE">EXECUTIVE ENGINEER</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-2"  style="display: none;">
+                                                <input type="text" class="form-control form-control-lg" id="admin" placeholder="Sub Admin">
+                                            </div>
+                                            <div class="form-group mb-2" id="subAdmind" style="display: none;">
+                                                <select class="form-control form-control-lg" id="subAdmin">
+                                                    <option value="">Select Your Sub Admin</option>
+                                                    <option value="subAdmin1">SUB ADMIN 1</option>
+                                                    <option value="subAdmin2">SUB ADMIN 2</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group mb-2" id="ce1d" style="display: none;">
+                                                <select class="form-control form-control-lg" id="ce1" onchange="getce2()">
+                                                    <option value="">Select Your CE</option>
+                                                    <!-- Add CE options here -->
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-2" id="ce2d" style="display: none;">
+                                                <select class="form-control form-control-lg" id="ce2" onchange="getse()">
+                                                    <option value="">Select Your CE</option>
+                                                    <!-- Add CE options here -->
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-2" id="sed" style="display: none;">
+                                                <select class="form-control form-control-lg" id="se" onchange="getee()">
+                                                    <option value="">Select Your SE</option>
+                                                    <!-- Add SE options here -->
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-2" id="eed" style=" display: none;">
+                                                <select class="form-control form-control-lg" id="ee">
+                                                    <option value="">Select Your EE</option>
+                                                    <!-- Add EE options here -->
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group mb-2" id="pwd" style="display: none;">
+
+                                                <label for="password1" class="form-label fw-bold">PASSWORD <span
+                                                        class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                      <span class="input-group-text">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+                                            <path d="M8 1a3 3 0 0 0-3 3v3H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-1V4a3 3 0 0 0-3-3zm0 1a2 2 0 0 1 2 2v3H6V4a2 2 0 0 1 2-2zm-4 7v4a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1z"/>
+                                          </svg>
+                                         </span>
+                                                    <input type="password" name="password" class="form-control" id="password1" value="">
+                                                </div>
+
+                                                <div class="mt-3">
+                                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOG IN</button>
+                                                </div>
+                                            </div>
+                                            <div class="my-2 d-flex justify-content-end align-items-center">
+                                                <a class="auth-link text-black h4" style="font-size: 1.0rem" th:href="@{/noc/forgotpassword}">Forgot password?</a>
+                                            </div>
+                                        </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{fragment/header.html :: footer}"></div>
+</div>
+
+<div th:replace="~{fragment/header.html :: js}"></div>
+<script th:src="@{/js/departmentLogin.js}"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml"
+>
+<head th:insert="~{fragment/header.html :: head}">
+    <title>Dashboard</title>
+</head>
+<body>
+
+<div class="container-fluid m-0 p-0">
+    <div th:insert="~{fragment/header.html :: top-navbar}"></div>
+    <div class="container-fluid m-0 p-0 d-flex">
+
+        <div th:insert="~{fragment/header.html :: sidebar_dep}"></div>
+
+        <main id="main-content">
+            <div class="container-fluid m-0 p-0 row">
+                <div class="col-12 mt-2">
+                    <div class="card-header row w-100 m-0">
+
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <h1 class="text-center text-md-center mt-3 fw-bolder">आवेदनों की समीक्षा करें</h1>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 d-flex align-items-center justify-content-end">
+                                <select id="financial-year-select" class="form-select w-50 card-border text-center"
+                                        aria-label="Default select example">
+                                    <!-- Options will be populated by JavaScript -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="container-fluid mt-2 p-2">
+
+                            <div class="container-fluid p-0 border border-2 shadow card">
+                                <div class="card-body">
+                                    <!--action="/data/savingfeedback" method="POST"-->
+                                    <form id="feedbackForm">
+                                        <h2 class="text-center">Filter Application</h2>
+
+                                        <div class="row">
+                                            <div class="mb-3 col-3">
+                                                <label for="nocType" class="col-sm-4 col-form-label fw-bold">NOC
+                                                    Type</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-select w-100" id="nocType" name="appliedFor"
+                                                            required>
+                                                        <option selected value="">Choose...</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <!--                                        <div class="mb-3 row">-->
+                                            <!--                                            <label for="agencyName" class="col-sm-2 col-form-label fw-bold">Agency-->
+                                            <!--                                                Name</label>-->
+                                            <!--                                            <div class="col-sm-10">-->
+                                            <!--                                                <input type="text" class="form-control w-100" id="agencyName"-->
+                                            <!--                                                       name="agencyName" placeholder="Enter Agency Name" required>-->
+                                            <!--                                            </div>-->
+                                            <!--                                        </div>-->
+                                            <div class="mb-3 col-3">
+                                                <label for="agencyName" class="col-sm-4 col-form-label fw-bold">Agency
+                                                    Name</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-select w-100" id="agencyName" name="agencyName"
+                                                            required>
+                                                        <option selected value="">Select an Agency...</option>
+                                                        <option value="larsenTurbo">Larsen Turbo Agency</option>
+                                                        <option value="ltiMindtree">LTI Mindtree Agency</option>
+                                                        <option value="porter">Porter Agency</option>
+                                                        <!-- Add more options as needed -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 col-3">
+                                                <label for="applicationId" class="col-sm-4 col-form-label fw-bold">Application
+                                                    Id</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-select w-100" id="applicationId"
+                                                            name="applicationId" required>
+                                                        <option selected value="">Select an Application Id...</option>
+                                                        <option value="e63b537e-0f31-491d-af6d-6afef3a6bf32">
+                                                            e63b537e-0f31-491d-af6d-6afef3a6bf32
+                                                        </option>
+                                                        <option value="a7dce1b2-4a69-4cb3-9448-1b9b3e6d0a51">
+                                                            a7dce1b2-4a69-4cb3-9448-1b9b3e6d0a51
+                                                        </option>
+                                                        <option value="f8b1b7d4-ec8c-4b84-a621-dfaed38fc4da">
+                                                            f8b1b7d4-ec8c-4b84-a621-dfaed38fc4da
+                                                        </option>
+                                                        <option value="d9e4a9a7-0e9f-41cf-823a-7e2d33c529c1">
+                                                            d9e4a9a7-0e9f-41cf-823a-7e2d33c529c1
+                                                        </option>
+                                                        <option value="c59d7d2a-fc3d-4b5e-95d4-f3a27478b1b7">
+                                                            c59d7d2a-fc3d-4b5e-95d4-f3a27478b1b7
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 col-3">
+                                                <label for="month" class="col-sm-4 col-form-label fw-bold">Month</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-select w-100" id="month" name="month" required>
+                                                        <option selected value="">Select a Month...</option>
+                                                        <option value="January">January</option>
+                                                        <option value="February">February</option>
+                                                        <option value="March">March</option>
+                                                        <option value="April">April</option>
+                                                        <option value="May">May</option>
+                                                        <option value="June">June</option>
+                                                        <option value="July">July</option>
+                                                        <option value="August">August</option>
+                                                        <option value="September">September</option>
+                                                        <option value="October">October</option>
+                                                        <option value="November">November</option>
+                                                        <option value="December">December</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 col-3">
+                                                <label for="financialYear" class="col-sm-4 col-form-label fw-bold">Financial
+                                                    Year</label>
+                                                <div class="col-sm-10">
+                                                    <select class="form-select w-100" id="financialYear"
+                                                            name="financialYear" required>
+                                                        <option selected value="">Select a Financial Year...</option>
+                                                        <option value="2024-2025">2024-2025</option>
+                                                        <option value="2023-2024">2023-2024</option>
+                                                        <option value="2022-2023">2022-2023</option>
+                                                        <option value="2021-2022">2021-2022</option>
+                                                        <option value="2020-2021">2020-2021</option>
+                                                        <option value="2019-2020">2019-2020</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 col-3">
+                                                <label for="executiveEngineer" class="form-label fw-bold">Executive
+                                                    Engineer</label>
+                                                <!--                        <input type="text" class="form-control" id="executiveEngineer">-->
+                                                <div class="col-sm-10">
+                                                    <select class="form-select" id="executiveEngineer" name="ee"
+                                                            onchange="functionToFetchRespectiveCeSe(this.value)" required>
+                                                        <option selected disabled value="">Choose...</option>
+                                                        <!-- Options will be populated dynamically -->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 col-3">
+                                                <label for="superintendentEngineer" class="form-label fw-bold">Superintendent
+                                                    Engineer</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="superintendentEngineer"
+                                                           name="se" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 col-3">
+                                                <label for="chiefEngineer2" class="form-label fw-bold">Chief Engineer -
+                                                    2</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="chiefEngineer2" name="ce2"
+                                                           required>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 col-3">
+                                                <label for="chiefEngineer1" class="form-label fw-bold">Chief Engineer -
+                                                    1</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" id="chiefEngineer1" name="ce1"
+                                                           required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="mb-3 row d-flex justify-content-center">
+                                            <button type="button" class="btn btn-primary w-25"
+                                            >Show Table
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
+                            <div class="container-fluid p-0 border border-2 shadow card">
+                                <div id="dataTableContainer" class="mt-2 mb-2">
+                                    <table id="example" class="w-100 table-responsive">
+                                        <thead>
+                                        <tr>
+                                            <th>क्रम संख्या</th>
+                                            <th>एजेंसी का नाम</th>
+                                            <th>अनापत्ति प्रकार</th>
+                                            <th>तारीख</th>
+                                            <th>आवेदन देखें</th>
+                                            <th>फ्लोचार्ट</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tableBody">
+                                        <!-- Table rows will be inserted here dynamically -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<div th:replace="~{fragment/header.html :: js}"></div>
+<script th:src="@{/js/nocDynamicForm.js}"></script>
+<script th:src="@{/js/reviewApplications.js}"></script>
+<script th:src="@{/js/dashboard.js}"></script>
+
+</body>
+</html>
